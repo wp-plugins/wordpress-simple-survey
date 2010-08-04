@@ -6,11 +6,11 @@ Requires at least: 2.8
 Tested up to: 3.01
 Stable tag: trunk
 
-A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend.
+A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. 
 
 == Description ==
 
-Wordpress Simple Survey is a plugin that allows for the creation of a survey, quiz, or questionnaire and the tracking of user submissions. The plugin is jQuery based which allows users to seamlessly and in graphically appealing manner, take the quiz without reloading the page. The survey questions and answers can be weighted so that some questions or answers count more than others, or all weights can be set to 1, so that each question counts the same. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. The plugin can also keep a record of all submissions and email results to a predefined email address.
+Wordpress Simple Survey is a plugin that allows for the creation of a survey, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend. The plugin is jQuery based which allows users to seamlessly and in graphically appealing manner, take the quiz without reloading the page. The survey questions and answers can be weighted so that some questions or answers count more than others, or all weights can be set to 1, so that each question counts the same. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. The plugin can also keep a record of all submissions and email results to a predefined email address.
 
 == Installation ==
 
@@ -57,3 +57,7 @@ to an article.
 
 = 1.0 =
 * Version 1.
+
+
+== Upgrade Notice ==
+None
