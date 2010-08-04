@@ -56,6 +56,12 @@ Add the string: [wp-simple-survey] to an article.
 = 1.0 =
 * Originating version.
 
+== Upgrade Notice ==
+
+= 1.0 =
+None
+
+
 == A brief Markdown Example ==
 
 Ordered list:
