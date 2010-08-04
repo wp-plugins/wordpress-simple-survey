@@ -1,0 +1,59 @@
+=== Plugin Name ===
+Contributors: richard_steeleagency
+Donate link: http://steele-agency.com/
+Tags: survey, questionnaire, quiz, exam, test
+Requires at least: 2.8
+Tested up to: 3.01
+Stable tag: trunk
+
+A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend.
+
+== Description ==
+
+Wordpress Simple Survey is a plugin that allows for the creation of a survey, quiz, or questionnaire and the tracking of user submissions. The plugin is jQuery based which allows users to seamlessly and in graphically appealing manner, take the quiz without reloading the page. The survey questions and answers can be weighted so that some questions or answers count more than others, or all weights can be set to 1, so that each question counts the same. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. The plugin can also keep a record of all submissions and email results to a predefined email address.
+
+== Installation ==
+
+1. Upload plugin to the 'wp-content/plugins/' directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
+3. Once activated the new menu item: WPSS Options, is created
+4. Configure your options, make sure to select the number of questions you want and click 'Update'
+5. Enter Questions, Answers, Weights, and Routes in the format specified, DO NOT PASTE FROM MS WORD, use a basic text editor
+
+== Frequently Asked Questions ==
+
+= Are the results tracked? =
+
+The results, Name, and Email addresses are stored in your database, and display in the 'WPSS Results' menu.
+
+= I don't want the user to be immediately directed to the end page, how can I create a buffer page? =
+
+Simple, instead of linking a score range with the end page, link each range with a separate buffer page that explains their score(or whatever) and then have that page link to the end page.
+
+= What type of quizzes can I create? =
+
+Two obvious ways of using this plugin are to create a Survey-Type quiz that routes user to a location based on their input, another is to use the plugin as a Quiz-Type manager where users are routed to either a "Passing" or "Failing" page. Also note, that results are recorded along with the user's email address (if this option is selected), so for a Survey-Type quiz, an admin can follow up with the user (market to them based on responses to quiz), or an admin can administer a test and record who passed and who failed. 
+
+= How do I make the quiz show up in my content? =
+
+Add the string: 
+
+	[wp-simple-survey] 
+
+to an article.
+
+
+== Screenshots ==
+
+1. Using quiz
+2. Progress Bar
+3. Submit Results
+4. Email Results
+5. Backend Quiz Management
+6. Backend Results View
+7. Diagram
+
+== Changelog ==
+
+= 1.0 =
+* Version 1.
