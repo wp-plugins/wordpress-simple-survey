@@ -91,7 +91,7 @@ add_action('wp_print_scripts', 'WPSS_ScriptsAction');
 # Includes JS in html header
 function WPSS_ScriptsAction(){
 	if (!is_admin()){
-		$wpss_url = WP_PLUGIN_URL."/WP-Simple-Survey/";
+		$wpss_url = WP_PLUGIN_URL."/wordpress-simple-survey/";
 		// Import JS libraries at appropriate time
 		$my_jquery = $wpss_url. "jqueryui1.7/js/jquery-1.4.2.min.js";
 		wp_deregister_script( 'jquery' ); 
@@ -108,7 +108,7 @@ function WPSS_ScriptsAction(){
 // Register CSS's for plugin
 add_action('wp_print_styles', 'add_my_stylesheets');
 function add_my_stylesheets() {
-	$wpss_url = WP_PLUGIN_URL . "/WP-Simple-Survey/";
+	$wpss_url = WP_PLUGIN_URL . "/wordpress-simple-survey/";
 
 	// main plugin css
 	wp_register_style('wpss_style', $wpss_url.'style.css');
@@ -130,7 +130,7 @@ function add_my_stylesheets() {
 
 // Register CSS for Admin Pages
 function admin_register_head() { 
-	$wpss_url = WP_PLUGIN_URL . "/WP-Simple-Survey/";
+	$wpss_url = WP_PLUGIN_URL . "/wordpress-simple-survey/";
 	$admin_css_url = $wpss_url . 'style.css'; 
 	echo '<link rel="stylesheet" type="text/css" href="'.$admin_css_url.'" />';
 }
