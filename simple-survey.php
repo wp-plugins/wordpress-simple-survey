@@ -3,7 +3,7 @@
 Plugin Name: WP Simple Survey
 Plugin URI: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
 Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend.
-Version: 1.1
+Version: 1.2
 Author: Richard Royal
 Author URI: http://www.steele-agency.com/author/rroyal/
 License: GPL2
@@ -92,20 +92,11 @@ add_action('wp_print_scripts', 'WPSS_ScriptsAction');
 function WPSS_ScriptsAction(){
 	if (!is_admin()){
 		$wpss_url = WP_PLUGIN_URL."/wordpress-simple-survey/";
-		// Import JS libraries at appropriate time
-		$my_jquery = $wpss_url. "jqueryui1.7/js/jquery-1.4.2.min.js";
-		wp_deregister_script( 'jquery' ); 
-    	wp_register_script( 'jquery', $my_jquery, false, '' ); 
-		wp_enqueue_script('jquery');
-
-		# jQueryUI
-		$my_jqueryUI = $wpss_url. "jqueryui1.7/development-bundle/ui/ui.core.js";
-		wp_deregister_script('jquery-ui-core');
-    	wp_register_script( 'jquery-ui-core', $my_jqueryUI, false, '' ); 
-		wp_enqueue_script('jquery-ui-core');
-		wp_enqueue_script('wpss_jqueryuiprogressbar', $wpss_url.'jqueryui1.7/development-bundle/ui/ui.progressbar.js');
-
+		// Register WP's version of jQuery $ jQueryUI, NOTE: These are queued in noConflict() Mode
+		wp_enqueue_script( 'wpss_jqueryuiprogressbar', $wpss_url.'jqueryui1.7/development-bundle/ui/ui.progressbar.js',array( 'jquery', 'jquery-ui-core' ), '1.7' );
 	}
+	// Ensure jQuery is registered for admin Results Page
+	else wp_enqueue_script('jquery');
 }
 
 // Register CSS's for plugin

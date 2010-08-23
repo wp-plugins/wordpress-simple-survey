@@ -21,7 +21,7 @@ function getQuiz(){
 
 	<script language="javaScript" type="text/javascript">
 	
-	function checkform(form){
+	function wpss_checkform(form){
 
 		if (form.name.value == "") {
 			alert( "Please enter your name." );
@@ -86,7 +86,7 @@ function getQuiz(){
 		<h2>' . $quizTitle . ' </h2>
 	    <div id="progress"><label id="amount">0%</label>
 			<p class="pgress">Progress:</p></div>
-			<form id="wpssform" action="' . $wpss_url . '"  method="post" onsubmit="return checkform(this);">';?>
+			<form id="wpssform" action="' . $wpss_url . '"  method="post" onsubmit="return wpss_checkform(this);">';?>
 
 			<?php 
 			for($i=0;$i<get_option('wpss_numQuestions');$i++){
@@ -142,7 +142,9 @@ function getQuiz(){
 		<script type="text/javascript">
 
 			var back=0;
-			$(function() {
+			(function($) {
+
+ 
 
 				($(this).attr("id") == "panel1") ? null : $("#next").attr("disabled", "disabled");
 				
@@ -231,7 +233,7 @@ function getQuiz(){
 						});
 					});
 				});					
-			});
+			})(jQuery);
 
 
 		</script>';
