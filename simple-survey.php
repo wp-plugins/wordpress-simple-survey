@@ -74,12 +74,11 @@ function simpsurv_tracking(){
 
 // Add Wordpress Custom Menu, Settings & Results
 function simpsurv_admin_actions() {
-	if (!current_user_can('manage_options'))  {
-		wp_die( __('You do not have sufficient permissions to access this page.') );
+	if (current_user_can('manage_options')) {
+		// Add Menus with functions
+		add_menu_page( "WP Simple Survey - Options", "WPSS Options", "publish_posts", "wpss-options", "simpsurv_admin");
+		add_submenu_page( "wpss-options", "WP Simple Survey - Results","WPSS Results" ,"publish_posts", "wpss-results", "simpsurv_tracking");
 	}
-	// Add Menus with functions
-	add_menu_page( "WP Simple Survey - Options", "WPSS Options", "publish_posts", "wpss-options", "simpsurv_admin");
-	add_submenu_page( "wpss-options", "WP Simple Survey - Results","WPSS Results" ,"publish_posts", "wpss-results", "simpsurv_tracking");
 }
 
 # Action hooks for admin menu, string filter, and javascripts
