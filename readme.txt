@@ -4,7 +4,7 @@ Donate link: http://steele-agency.com/
 Tags: survey, questionnaire, quiz, exam, test
 Requires at least: 2.8
 Tested up to: 3.01
-Stable tag: 1.2
+Stable tag: 1.3
 
 A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. 
 
@@ -57,6 +57,9 @@ Add the string: [wp-simple-survey] to an article.
 * Originating version.
 
 == Upgrade Notice ==
+
+= 1.3 =
+Fixed bug in function that registers WPSS Menus in backend.
 
 = 1.2 =
 Improved import method for all javascript libraries. WPSS is now using WP native versions of jQuery & jQuery-UI core. These import in noConflict() mode which is taken advantage of by the plugin. This ensures fewer conflict with existing plugins and themes. Checkform JS method is also updated (by name only); it is now wpss_checkForm(form), this also reduces conflict with existing themes' and plugins' checkform methods. 
