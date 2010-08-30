@@ -72,9 +72,9 @@ Changed jQueryUI import method to ensure that only one copy is being registered
 = 1.0 =
 None
 
-== A brief Markdown Example ==
+== Markdown ==
 
-Ordered list:
+Order:
 
 1. Outputs a Quiz
 2. Tracks User Submissions
