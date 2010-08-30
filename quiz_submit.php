@@ -2,39 +2,37 @@
 
 if(isset($_POST['routing'])){
 	
+	// Get Send-To email and tracking bool
+	$track 	= stripslashes(get_option('wpss_quizTrack'));
+	if($track == 'yes') $track = true;	//ensure boolean
+	else $track = false;
+	
+	$sendTo = stripslashes(get_option('wpss_sendEmail'));
+	if($_POST['sendemail'] == 'true' && $sendTo != '') $send = true;
+
+			
 	// Email validation 
 	function isValidEmail($email){
 		return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email);
 	}
 
+	// Get/Validate Input
+	$email 	= htmlentities(stripslashes($_POST['email']));
+	$name 	= htmlentities(stripslashes($_POST['name']));	
 
-	if($_POST['tracking'] == 'yes'){
-		$error = '';
-		
-		// Validate Input
-		if(!isValidEmail($_POST['email'])) $error.="Please insert a valid email address<br />";
-		else{$email 	= htmlentities(stripslashes($_POST['email']));}
-		$name 		= htmlentities(stripslashes($_POST['name']));
-		$tracking	= true;
-		if($error == ''){
-			unset($_POST['email']);
-			unset($_POST['name']);
-		}
-	}	
 
 	$score = 0;
 	$ranges;
 	$routes;
 
-	/* Header for Tracking */
-	if($tracking){
-		$message = '
-		<h2>Quiz Results</h2>
-		<p>
-		Name: '.$name.'<br />
-		Email: '.$email.'</p>
-		';
-	}
+	/* Header for Tracking and Email */
+	$message = '
+	<h2>Quiz Results</h2>
+	<p>
+	Name: '.$name.'<br />
+	Email: '.$email.'</p>
+	';
+
 
 	/* Get The Score*/
 	$questions = getQuestions();
@@ -61,21 +59,19 @@ if(isset($_POST['routing'])){
 	}
 
 	// Add question and selected answer to message 
-	if($tracking){
-		$message .=	'<p>
-					Score: '.$score.'<br />
-					Routed to: '.$location.'</p>
-					<h2>Answers:</h2>  
-					';
-		for($i=0;$i<$n;$i++){
-			$message .= '<p>'.$questions[0][$i];
-			$message .= $questions[1][$i][0][ $_POST['group'.$i] ] .'<br /></p>';
-			
-		}
-	} 
+	$message .=	'<p>
+				Score: '.$score.'<br />
+				Routed to: '.$location.'</p>
+				<h2>Answers:</h2>  
+				';
+	for($i=0;$i<$n;$i++){
+		$message .= '<p>'.$questions[0][$i];
+		$message .= $questions[1][$i][0][ $_POST['group'.$i] ] .'<br /></p>';
+		
+	}
 
 	// Send email message 
-	if(get_option('wpss_sendEmail')!=''){
+	if($send){
 		$from = 'WP Simple Survey <wpss@'.str_replace('http://','',get_bloginfo('url')).'>';
 		$subject = 'New "'.stripslashes(get_option('wpss_quizTitle')).'" Submitted';
 		// To send HTML mail, the Content-type header must be set
@@ -84,11 +80,11 @@ if(isset($_POST['routing'])){
 					'From:' . $from . "\r\n" . 
 					'Reply-To: ' . $from . "\r\n" . 
 					'X-Mailer: PHP/' . phpversion();
-		mail(stripslashes(get_option('wpss_sendEmail')), $subject, $message, $headers, '-f info@'.str_replace('http://','',get_bloginfo('url')));
+		mail($sendTo, $subject, $message, $headers, '-f info@'.str_replace('http://','',get_bloginfo('url')));
 	}
 
 	// store results in database
-	if($tracking){
+	if($track){
 		// Save message into Database
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'wpss_quizTracking';

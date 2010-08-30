@@ -19,7 +19,7 @@ function getQuiz(){
 
 	$retQuiz .= '
 
-	<script language="javaScript" type="text/javascript">
+	<script language="javascript" type="text/javascript">
 	
 	function wpss_checkform(form){
 
@@ -298,7 +298,8 @@ function getUserInfo(){
 	
 	$infoForm;
 	
-	if(stripslashes(get_option('wpss_quizTrack'))=='yes'){
+	if(stripslashes(get_option('wpss_quizTrack'))=='yes' ||
+	   stripslashes(get_option('wpss_sendEmail'))!=''){
 
 		$infoForm.='
 
@@ -307,7 +308,7 @@ function getUserInfo(){
 		<label for="name">Name*:</label> <input type="text" name="name" /><br />
 		<label for="email">Email*:</label> <input type="text" name="email" />
 
-		<input type="hidden" name="tracking" value="yes">
+		<input type="hidden" name="sendemail" value="true">
 
 		</div>
 

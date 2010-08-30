@@ -1,17 +1,16 @@
 === Plugin Name ===
 Contributors: richard_steeleagency
-Donate link: http://steele-agency.com/
+Donate link: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
 Tags: survey, questionnaire, quiz, exam, test
 Requires at least: 2.8
 Tested up to: 3.01
-Stable tag: 1.3
+Stable tag: 1.4
 
 A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. 
 
 == Description ==
 
 Wordpress Simple Survey is a plugin that allows for the creation of a survey, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend. The plugin is jQuery based which allows users to seamlessly and in graphically appealing manner, take the quiz without reloading the page. The survey questions and answers can be weighted so that some questions or answers count more than others, or all weights can be set to 1, so that each question counts the same. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. The plugin can also keep a record of all submissions and email results to a predefined email address.
-
 
 == Installation ==
 
@@ -20,7 +19,6 @@ Wordpress Simple Survey is a plugin that allows for the creation of a survey, qu
 3. Once activated the new menu item: WPSS Options, is created
 4. Configure your options, make sure to select the number of questions you want and click 'Update'
 5. Enter Questions, Answers, Weights, and Routes in the format specified, DO NOT PASTE FROM MS WORD, use a basic text editor
-
 
 == Frequently Asked Questions ==
 
@@ -40,16 +38,11 @@ Two obvious ways of using this plugin are to create a Survey-Type quiz that rout
 
 Add the string: [wp-simple-survey] to an article.
 
-
 == Screenshots ==
 
 1. Using quiz
 2. Progress Bar
 3. Submit Results
-4. Email Results
-5. Backend Quiz Management
-6. Backend Results View
-7. Diagram
 
 == Changelog ==
 
@@ -57,6 +50,9 @@ Add the string: [wp-simple-survey] to an article.
 * Originating version.
 
 == Upgrade Notice ==
+
+= 1.4 =
+Improved mail() function and admin CSS
 
 = 1.3 =
 Fixed bug in function that registers WPSS Menus in backend.
@@ -70,7 +66,6 @@ Changed jQueryUI import method to ensure that only one copy is being registered
 = 1.0 =
 None
 
-
 == A brief Markdown Example ==
 
 Ordered list:
@@ -79,9 +74,5 @@ Ordered list:
 2. Tracks User Submissions
 3. Route user to location based on results
 
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
 [Steele Agency]: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
             "Plugin URL"
-

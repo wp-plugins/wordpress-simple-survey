@@ -3,7 +3,7 @@
 Plugin Name: WP Simple Survey
 Plugin URI: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
 Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend.
-Version: 1.3
+Version: 1.4
 Author: Richard Royal
 Author URI: http://www.steele-agency.com/author/rroyal/
 License: GPL2
@@ -137,7 +137,7 @@ add_action('admin_head', 'admin_register_head');
  *	including database settings needed for tracking
  */
 function wpss_parse_request($wp) {
-    // only process requests with "wpss-routing=results"
+    // only process requests POST'ed to "/?wpss-routing=results"
     if (array_key_exists('wpss-routing', $wp->query_vars) 
             && $wp->query_vars['wpss-routing'] == 'results') {
 		include('quiz_submit.php');	

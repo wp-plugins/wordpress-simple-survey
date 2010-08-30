@@ -37,12 +37,14 @@
 	vertical-align: top;
 	font-size:9px;font-weight:bold;
 	margin:0 0 0 6px;color:#333;
+	height:1em;
 }
 #wpss_survey label#amount { 
 	float:right; 
 	vertical-align: top;
 	font-size:9px;font-weight:bold;
 	margin:2px 5px 0 0;color:#333; 
+	height:1em;
 }
 
 /* Question */
@@ -131,7 +133,34 @@
 #wpss_results span.name{
 	float:right;
 }
-
+.wpss_large{
+	font-size:20px;
+}
+.wpss_b{
+	font-weight:bold;
+}
+.wpss_options{
+	margin-top:15px;
+	margin-bottom:5px;
+	padding:10px;
+	padding-top:0;
+	border:#DFDFDF solid 1px;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-left-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-bottom-right-radius: 4px 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-left-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+	border-top-right-radius: 4px 4px;
+}
+#wpss_options input{
+/*	float:right;*/
+}
 
 #wpss_results ol, #wpss_results ul {
 	list-style: none;
