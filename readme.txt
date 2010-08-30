@@ -7,6 +7,7 @@ Tested up to: 3.01
 Stable tag: 1.4
 
 A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. 
+<a href="http://www.steele-agency.com/2010/08/wordpress-simple-survey/">Project Homepage</a>
 
 == Description ==
 
@@ -43,6 +44,10 @@ Add the string: [wp-simple-survey] to an article.
 1. Using quiz
 2. Progress Bar
 3. Submit Results
+4. Email Results
+5. Backend Quiz Management
+6. Backend Results View
+7. Diagram
 
 == Changelog ==
 
