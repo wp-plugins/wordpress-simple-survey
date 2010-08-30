@@ -7,11 +7,12 @@ Tested up to: 3.01
 Stable tag: 1.4
 
 A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. 
-<a href="http://www.steele-agency.com/2010/08/wordpress-simple-survey/">Project Homepage</a>
 
 == Description ==
 
 Wordpress Simple Survey is a plugin that allows for the creation of a survey, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend. The plugin is jQuery based which allows users to seamlessly and in graphically appealing manner, take the quiz without reloading the page. The survey questions and answers can be weighted so that some questions or answers count more than others, or all weights can be set to 1, so that each question counts the same. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. The plugin can also keep a record of all submissions and email results to a predefined email address.
+* [Project Homepage](http://www.steele-agency.com/2010/08/wordpress-simple-survey/)
+* [Support](http://www.steele-agency.com/2010/08/wordpress-simple-survey/#comments)
 
 == Installation ==
 
