@@ -104,7 +104,7 @@ function getQuiz(){
 						foreach ($formated_quiz[1][$i][0] as $index => $choice){
 
    
-							$retQuiz .= '<input type="radio" name="group'.$i.'" value="'.$index.'"><label>'.stripslashes($choice).'</label>';	 
+							$retQuiz .= '<input type="radio" name="group'.$i.'" value="'.$index.'" /><label>'.stripslashes($choice).'</label>';	 
 							
 							$n++;
 						}
@@ -124,11 +124,11 @@ function getQuiz(){
 				<fieldset class="ui-corner-all">
 
 				<h3>'.$quizOutro.'</h3>
-				<input type="hidden" name="routing" value="true">		
+				<input type="hidden" name="routing" value="true" />		
 				
 				'.getUserInfo().'
 
-				<input id="submitButton" type="submit" value="Calculate Results">
+				<input id="submitButton" type="submit" value="Calculate Results" />
 				</fieldset>
 
 			</div>
