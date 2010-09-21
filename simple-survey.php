@@ -92,10 +92,14 @@ function WPSS_ScriptsAction(){
 	if (!is_admin()){
 		$wpss_url = WP_PLUGIN_URL."/wordpress-simple-survey/";
 		// Register WP's version of jQuery $ jQueryUI, NOTE: These are queued in noConflict() Mode
-		wp_enqueue_script( 'wpss_jqueryuiprogressbar', $wpss_url.'jqueryui1.7/development-bundle/ui/ui.progressbar.js',array( 'jquery', 'jquery-ui-core' ), '1.7' );
+		wp_enqueue_script('wpss_jqueryuiprogressbar', $wpss_url.'jqueryui1.7/development-bundle/ui/ui.progressbar.js',array( 'jquery', 'jquery-ui-core' ), '1.7' );
 	}
 	// Ensure jQuery is registered for admin Results Page
-	else wp_enqueue_script('jquery');
+	else{ 
+		$wpss_url = WP_PLUGIN_URL."/wordpress-simple-survey/";
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('wpss_tip', $wpss_url.'/jqueryui1.7/jquery.tools.min.js',array( 'jquery', 'jquery-ui-core' ), '1.0' );
+	}
 }
 
 // Register CSS's for plugin

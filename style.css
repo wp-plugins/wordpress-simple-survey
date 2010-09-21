@@ -122,8 +122,6 @@
 	float:right;
 }
 
-
-
 /*-------------------Results Page-----------------------------*/
 #wpss_results{
 	text-decoration: none;
@@ -160,8 +158,20 @@
 	border-top-right-radius: 4px 4px;
 	border-top-right-radius: 4px 4px;
 }
-#wpss_options input{
-/*	float:right;*/
+
+.wpss_options .wpss_info{
+	vertical-align:middle;
+	border:none;
+}
+
+.tooltip {
+	display:none;
+	background:transparent url(images/white.png) no-repeat 0 0;
+	font-size:12px;
+	height:80px;
+	width:170px;
+	padding:20px;
+	color:black;	
 }
 
 #wpss_results ol, #wpss_results ul {
@@ -174,6 +184,7 @@
 	content: '';
 	content: none;
 }
+
 
 /* remember to define focus styles! */
 #wpss_results  :focus {
