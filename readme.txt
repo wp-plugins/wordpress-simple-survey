@@ -55,24 +55,24 @@ Add the string: [wp-simple-survey] to an article.
 == Changelog ==
 
 = 1.5.0 =
-*Added Auto-Respond Functionality 
-*Changed php::mail() function to wp_mail() function from WP API
-*Modified Admin look and feel
+* Added Auto-Respond Functionality 
+* Changed php::mail() function to wp_mail() function from WP API
+* Modified Admin look and feel
 
 = 1.4.1 =
-*Improved CSS to reset spacing and padding on more themes
+* Improved CSS to reset spacing and padding on more themes
 
 = 1.4 =
-*Improved mail() function and admin CSS
+* Improved mail() function and admin CSS
 
 = 1.3 =
-*Fixed bug in function that registers WPSS Menus in backend.
+* Fixed bug in function that registers WPSS Menus in backend.
 
 = 1.2 =
-*Improved import method for all javascript libraries. WPSS is now using WP native versions of jQuery & jQuery-UI core. These import in noConflict() mode which is taken advantage of by the plugin. This ensures fewer conflict with existing plugins and themes. Checkform JS method is also updated (by name only); it is now wpss_checkForm(form), this also reduces conflict with existing themes' and plugins' checkform methods. 
+* Improved import method for all javascript libraries. WPSS is now using WP native versions of jQuery & jQuery-UI core. These import in noConflict() mode which is taken advantage of by the plugin. This ensures fewer conflict with existing plugins and themes. Checkform JS method is also updated (by name only); it is now wpss_checkForm(form), this also reduces conflict with existing themes' and plugins' checkform methods. 
 
 = 1.1 =
-*Changed jQueryUI import method to ensure that only one copy is being registered
+* Changed jQueryUI import method to ensure that only one copy is being registered
 
 = 1.0 =
 * Originating version.
