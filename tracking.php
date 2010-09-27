@@ -5,17 +5,16 @@
 	<hr />
 
 	<script type="text/javascript">
-	jQuery(document).ready(function($){
-
-		//Hide (Collapse) the toggle containers on load
-		$(".togglebox1").hide(); 
-
-		//Slide up and down on click
-		$("#wpss_results h2").click(function(){
-			$(this).next(".togglebox1").slideToggle("slow");
+	(function($) {
+ 		$(function() {
+			//Hide (Collapse) the toggle containers on load
+			$(".togglebox1").hide(); 
+			//Slide up and down on click
+			$("#wpss_results h2").click(function(){
+				$(this).next(".togglebox1").slideToggle("slow");
+			});
 		});
-
-	});
+	})(jQuery);
 	</script>
 
 	<?php // Grab all results from database

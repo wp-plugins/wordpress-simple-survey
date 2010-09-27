@@ -3,7 +3,7 @@
 Plugin Name: WP Simple Survey
 Plugin URI: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
 Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend.
-Version: 1.5.0
+Version: 1.5.1
 Author: Richard Royal
 Author URI: http://www.steele-agency.com/author/rroyal/
 License: GPL2
@@ -87,18 +87,19 @@ add_filter('the_content', 'simpsurv_filter');
 add_action('wp_print_scripts', 'WPSS_ScriptsAction');
 
 
-# Includes JS in html header
+# Includes JS in HTML header
 function WPSS_ScriptsAction(){
+	$wpss_url = WP_PLUGIN_URL."/wordpress-simple-survey/";
 	if (!is_admin()){
-		$wpss_url = WP_PLUGIN_URL."/wordpress-simple-survey/";
 		// Register WP's version of jQuery $ jQueryUI, NOTE: These are queued in noConflict() Mode
 		wp_enqueue_script('wpss_jqueryuiprogressbar', $wpss_url.'jqueryui1.7/development-bundle/ui/ui.progressbar.js',array( 'jquery', 'jquery-ui-core' ), '1.7' );
 	}
-	// Ensure jQuery is registered for admin Results Page
+	// Ensure jQuery is registered for admin Results Page Toggle
 	else{ 
-		$wpss_url = WP_PLUGIN_URL."/wordpress-simple-survey/";
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('wpss_tip', $wpss_url.'/jqueryui1.7/jquery.tools.min.js',array( 'jquery', 'jquery-ui-core' ), '1.0' );
+		if ($_GET['page']== "wpss-options"){ // only call when needed to avoid conflict
+			wp_enqueue_script('wpss_tip', $wpss_url.'jqueryui1.7/jquery.tools.min.js',array( 'jquery', 'jquery-ui-core' ), '1.0' );
+		}
+		else wp_enqueue_script('jquery');
 	}
 }
 
@@ -126,12 +127,12 @@ function add_my_stylesheets() {
 
 
 // Register CSS for Admin Pages
-function admin_register_head() { 
+function wpss_admin_register_head() { 
 	$wpss_url = WP_PLUGIN_URL . "/wordpress-simple-survey/";
 	$admin_css_url = $wpss_url . 'style.css'; 
 	echo '<link rel="stylesheet" type="text/css" href="'.$admin_css_url.'" />';
 }
-add_action('admin_head', 'admin_register_head');
+add_action('admin_head', 'wpss_admin_register_head');
 
 
 
