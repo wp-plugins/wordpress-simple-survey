@@ -22,7 +22,7 @@ if(isset($_POST['routing'])){
 	$emailResponce	= stripslashes(get_option('wpss_emailResponce'));
 	
 	// Email validation 
-	function isValidEmail($email){
+	function wpss_isValidEmail($email){
 		return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email);
 	}
 	// Get/Validate Input
@@ -117,7 +117,7 @@ if(isset($_POST['routing'])){
 		$resp = str_replace('[quiztitle]',$quizTitle,$resp);
 		$resp = str_replace('[answers]',$userQA,$resp);
 		// send email to user, if inputted valid email
-		if(isValidEmail($email)) wp_mail($email, $subject, $resp, $headers);
+		if(wpss_isValidEmail($email)) wp_mail($email, $subject, $resp, $headers);
 	}
 
 	// store results in database, if requested
