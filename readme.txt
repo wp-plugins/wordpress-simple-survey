@@ -54,6 +54,9 @@ Add the string: [wp-simple-survey] to an article.
 
 == Changelog ==
 
+= 1.5.3 =
+* Fixed Next button bug on submit slide click trigger
+
 = 1.5.2 =
 * Changed function name for more compatability
 
