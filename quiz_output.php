@@ -141,17 +141,33 @@ function getQuiz(){
 	$retQuiz .= '
 		<script type="text/javascript">
 
-			var back=0;
+			// returns value selected from radio set
+			function wpss_getCheckedValue(radioObj) {
+				if(!radioObj)
+					return "end";
+				var radioLength = radioObj.length;
+				if(radioLength == undefined)
+					if(radioObj.checked)
+						return radioObj.value;
+					else
+						return "";
+				for(var i = 0; i < radioLength; i++) {
+					if(radioObj[i].checked) {
+						return radioObj[i].value;
+					}
+				}
+				return "";
+			}
+		
+			// current question number
+			var wpss_curRadio = 0;
+	
 			(function($) {
 
- 
 
+				// run on load only
 				($(this).attr("id") == "panel1") ? null : $("#next").attr("disabled", "disabled");
-				
-				$("input").change(function(){
-					$("#next").removeAttr("disabled");
-				});
-
+	
 				//call progress bar constructor
 				$("#progress").progressbar({ change: function() {
 				
@@ -160,24 +176,24 @@ function getQuiz(){
 				} });
 
 			
+
 				//set click handler for next button
 				$("#next").click(function(e) {
-				  
+
 					//stop form submission
 					e.preventDefault();
-				  
-					if(back<0) back++;
+					$("#next").removeAttr("disabled");
+					$("#back").removeAttr("disabled");
 
+					// increment cur question count
+					wpss_curRadio++;
+				
 					//look at each panel
 					$(".form-panel").each(function() {
 					  
 						//if it is not the first panel enable the back button
-						($(this).attr("id") != "panel1") ? null : $("#back").attr("disabled", "");
+						//($(this).attr("id") != "panel1") ? null : $("#back").attr("disabled", "");
 						
-						// #next only after input, or question revisited
-						$("#next").attr("disabled", "disabled");
-						if(back<0) $("#next").removeAttr("disabled");
-			
 
 									
 						//if the panel is visible fade it out
@@ -188,8 +204,7 @@ function getQuiz(){
 							  
 								//if it is the last panel disable the next button
     							($(this).attr("id") != "thanks") ? null : $("#next").attr("disabled", "disabled");	
-					
-																
+								
 								//remove hidden class from new panel
 								$(this).removeClass("ui-helper-hidden");
 								
@@ -206,14 +221,15 @@ function getQuiz(){
 					//stop form submission
 					e.preventDefault();
 
-					back-=1;
-					
+					// decrement cur question count
+					wpss_curRadio-=1;
+
 					//look at each panel
 				  $(".form-panel").each(function() {
 					  					
 					  	//if it is not the last panel enable the next button
-						$("#next").removeAttr("disabled");
-						($(this).attr("id") != "thanks") ? null : $("#next").attr("disabled", "");
+						//$("#next").removeAttr("disabled");
+						//($(this).attr("id") != "thanks") ? null : $("#next").attr("disabled", "");
 					  
 						//if the panel is visible fade it out
 					  	($(this).hasClass("ui-helper-hidden")) ? null : $(this).fadeOut("fast", function() {
@@ -222,7 +238,7 @@ function getQuiz(){
 							$(this).addClass("ui-helper-hidden").prev().fadeIn("fast", function() {
 							
 							  	//if it is the first panel disable the back button
-    							($(this).attr("id") != "panel1") ? null : $("#back").attr("disabled", "disabled");
+								($(this).attr("id") != "panel1") ? null : $("#back").attr("disabled", "disabled");
 										
 								//remove hidden class from new panel
 								$(this).removeClass("ui-helper-hidden");
@@ -232,7 +248,25 @@ function getQuiz(){
 							});
 						});
 					});
-				});					
+				});
+
+				// handles button activation on clicks
+				$("#wpssform").click(function() {
+				
+					checkVal = wpss_getCheckedValue(wpssform.elements["group"+wpss_curRadio]);
+					checkPrevVal = wpss_getCheckedValue(wpssform.elements["group"+(wpss_curRadio-1)]);
+					if(checkVal != "" & checkVal != "end"){
+				  		$("#next").removeAttr("disabled");
+					}
+					else{
+						$("#next").attr("disabled", "disabled");
+					}
+					if(checkPrevVal != "" & checkPrevVal != "end"){
+				  		$("#back").removeAttr("disabled");
+					}
+				});
+
+					
 			})(jQuery);
 
 
