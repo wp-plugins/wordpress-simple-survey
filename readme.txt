@@ -4,7 +4,7 @@ Donate link: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
 Tags: survey, questionnaire, quiz, exam, test
 Requires at least: 2.8
 Tested up to: 3.01
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 
 A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. 
 

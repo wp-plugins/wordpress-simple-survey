@@ -86,7 +86,7 @@ function getQuiz(){
 		<h2>' . $quizTitle . ' </h2>
 	    <div id="progress"><label id="amount">0%</label>
 			<p class="pgress">Progress:</p></div>
-			<form id="wpssform" action="' . $wpss_url . '"  method="post" onsubmit="return wpss_checkform(this);">';?>
+			<form id="wpssform" name="wpssform" action="' . $wpss_url . '"  method="post" onsubmit="return wpss_checkform(this);">';?>
 
 			<?php 
 			for($i=0;$i<get_option('wpss_numQuestions');$i++){
@@ -253,8 +253,8 @@ function getQuiz(){
 				// handles button activation on clicks
 				$("#wpssform").click(function() {
 				
-					checkVal = wpss_getCheckedValue(wpssform.elements["group"+wpss_curRadio]);
-					checkPrevVal = wpss_getCheckedValue(wpssform.elements["group"+(wpss_curRadio-1)]);
+					checkVal = wpss_getCheckedValue(document.wpssform.elements["group"+wpss_curRadio]);
+					checkPrevVal = wpss_getCheckedValue(document.wpssform.elements["group"+(wpss_curRadio-1)]);
 					if(checkVal != "" & checkVal != "end"){
 				  		$("#next").removeAttr("disabled");
 					}
