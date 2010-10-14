@@ -54,6 +54,9 @@ Add the string: [wp-simple-survey] to an article.
 
 == Changelog ==
 
+= 1.5.4 =
+* Fixed Firefox specific Next button issue
+
 = 1.5.3 =
 * Fixed Next button bug on submit slide click trigger
 
