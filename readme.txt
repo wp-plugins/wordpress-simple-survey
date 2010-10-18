@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== WordPress Simple Survey ===
 Contributors: richard_steeleagency
 Donate link: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
 Tags: survey, questionnaire, quiz, exam, test
