@@ -2,159 +2,154 @@
 /*
 Plugin Name: WP Simple Survey
 Plugin URI: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
-Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend.
-Version: 1.5.4
+Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend.
+Version: 2.0.0
 Author: Richard Royal
 Author URI: http://www.steele-agency.com/author/rroyal/
 License: GPL2
 */
-/*  Copyright 2010 Richard Royal (email: richard at steele-agency.com)
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*/
-?>
-<?php
-
-// Import for quiz producing function
-include("quiz_output.php");
-
-// Register plugin activation table creation
-global $my_plugin_table;
-global $my_plugin_db_version;
 global $wpdb;
-$my_plugin_table = $wpdb->prefix . 'wpss_quizTracking';
-$my_plugin_version = '1.0';
+define('WPSS_PATH',ABSPATH.PLUGINDIR."/wordpress-simple-survey/");
+define('WPSS_URL',WP_PLUGIN_URL."/wordpress-simple-survey/");
+define('WPSS_SUBMIT_RESULTS',get_bloginfo('url')."/?wpss-routing=results");
+define('WPSS_QUIZZES_DB',$wpdb->prefix.'wpss_Quizzes');
+define('WPSS_QUESTIONS_DB',$wpdb->prefix.'wpss_Questions');
+define('WPSS_ANSWERS_DB',$wpdb->prefix.'wpss_Answers');
+define('WPSS_RESULTS_DB',$wpdb->prefix.'wpss_Results');
+define('WPSS_ROUTES_DB',$wpdb->prefix.'wpss_Routes');
+define('WPSS_FIELDS_DB',$wpdb->prefix.'wpss_Fields');
+define('WPSS_EXTENDED_DB_VERSION','1.0');
+require_once(ABSPATH.'wp-admin/includes/upgrade.php');
+require_once("functions.php");
+require_once("submit_functions.php");
+require_once("db_setup.php");
+require_once("quiz_js.php");
+require_once("output_quiz.php");
 
-register_activation_hook( __FILE__,  'wpss_plugin_install' );
 
-function wpss_plugin_install() {
-	global $wpdb;
-	global $my_plugin_table;
-	global $my_plugin_db_version;
 
-	if ( $wpdb->get_var( "show tables like '$my_plugin_table'" ) != $my_plugin_table ) {
-		$sql = "CREATE TABLE $my_plugin_table (".
-		     "id int NOT NULL AUTO_INCREMENT, ".
-		     "results text NOT NULL, ".
-		     "time VARCHAR(30) DEFAULT '0' NOT NULL, ".
-		     "UNIQUE KEY id (id) ".
-				 ")";
-		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-		dbDelta( $sql );
-	    	add_option( "my_plugin_db_version", $my_plugin_db_version );
-	}
-}
+// run setup scripts on activation
+register_activation_hook(__FILE__,'wpss_plugin_install');
 
-// Filter Content for quiz string: [wp-simple-survey]
-function simpsurv_filter($content) {
-	return str_replace('[wp-simple-survey]',getQuiz(),$content);
-}
 
-// Route Setting link menu to admin page
-function simpsurv_admin(){
-	include("admin_page.php");
-}
 
-// Route Results link menu to results page
-function simpsurv_tracking(){
-	include("tracking.php");
-}
+/**
+ *	Connect Each Admin page with its function
+ *	which imports php script page
+ */
+function simpsurv_admin(){require_once("admin_quizzes.php");}
+function simpsurv_tracking(){require_once("view_results.php");}
+function simpsurv_help(){require_once("admin_help.php");}
 
 // Add Wordpress Custom Menu, Settings & Results
 function simpsurv_admin_actions() {
 	if (current_user_can('manage_options')) {
 		// Add Menus with functions
-		add_menu_page( "WP Simple Survey - Options", "WPSS Options", "publish_posts", "wpss-options", "simpsurv_admin");
-		add_submenu_page( "wpss-options", "WP Simple Survey - Results","WPSS Results" ,"publish_posts", "wpss-results", "simpsurv_tracking");
+		add_menu_page("WP Simple Survey - Setup Quizzes", "WPSS - Setup", "publish_posts", "wpss-setup","simpsurv_admin");
+		add_submenu_page( "wpss-setup", "WP Simple Survey - Results / Export","Results/Export" ,"publish_posts", "wpss-results", "simpsurv_tracking");
+		add_submenu_page( "wpss-setup", "WP Simple Survey - Help","WPSS Help" ,"publish_posts", "wpss-help", "simpsurv_help");
 	}
-}
-
-# Action hooks for admin menu, string filter, and javascripts
-add_action('admin_menu', 'simpsurv_admin_actions');
-add_filter('the_content', 'simpsurv_filter');
-add_action('wp_print_scripts', 'WPSS_ScriptsAction');
+}add_action('admin_menu', 'simpsurv_admin_actions');
 
 
-# Includes JS in HTML header
-function WPSS_ScriptsAction(){
-	$wpss_url = WP_PLUGIN_URL."/wordpress-simple-survey/";
+
+
+
+/**
+ *  Include JS Library in HTML <head>
+ *  NOTE: See js/README.txt	for good time
+ */
+function wpss_includeScripts(){
 	if (!is_admin()){
-		// Register WP's version of jQuery $ jQueryUI, NOTE: These are queued in noConflict() Mode
-		wp_enqueue_script('wpss_jqueryuiprogressbar', $wpss_url.'jqueryui1.7/development-bundle/ui/ui.progressbar.js',array( 'jquery', 'jquery-ui-core' ), '1.7' );
+    wp_deregister_script('jquery-ui-core');
+    wp_deregister_script('jquery-ui-tabs');
+    wp_deregister_script('jquery-ui-sortable');
+    wp_deregister_script('jquery-ui-draggable');
+    wp_deregister_script('jquery-ui-droppable');
+    wp_deregister_script('jquery-ui-selectable');
+    wp_deregister_script('jquery-ui-resizable');
+    wp_deregister_script('jquery-ui-dialog');          
+    wp_register_script('jquery-ui',WPSS_URL.'js/jquery-ui-1.8.10.full.min.js',array('jquery'),'1.8.10');
+    wp_enqueue_script('jquery-ui');		
+		wp_enqueue_script('wpss_custom', WPSS_URL.'js/custom.js',array('jquery','jquery-ui'), '1.0' );
 	}
-	// Ensure jQuery is registered for admin Results Page Toggle
-	else{ 
-		if ($_GET['page']== "wpss-options"){ // only call when needed to avoid conflict
-			wp_enqueue_script('wpss_tip', $wpss_url.'jqueryui1.7/jquery.tools.min.js',array( 'jquery', 'jquery-ui-core' ), '1.0' );
-		}
-		else wp_enqueue_script('jquery');
-	}
-}
-
-// Register CSS's for plugin
-add_action('wp_print_styles', 'add_my_stylesheets');
-function add_my_stylesheets() {
-	$wpss_url = WP_PLUGIN_URL . "/wordpress-simple-survey/";
-
-	// main plugin css
-	wp_register_style('wpss_style', $wpss_url.'style.css');
-	wp_enqueue_style( 'wpss_style');
-
-	// ui core css
-	wp_register_style('wpss_uicore', $wpss_url.'jqueryui1.7/development-bundle/themes/smoothness/ui.core.css');
-	wp_enqueue_style( 'wpss_uicore');
-
-	// ui theme css
-	wp_register_style('wpss_uitheme', $wpss_url.'jqueryui1.7/development-bundle/themes/smoothness/ui.theme.css');
-	wp_enqueue_style( 'wpss_uitheme');
-
-	// ui progressbar css
-	wp_register_style('wpss_probar', $wpss_url.'jqueryui1.7/development-bundle/themes/smoothness/ui.progressbar.css');
-	wp_enqueue_style( 'wpss_probar');
-}
-
-
-// Register CSS for Admin Pages
-function wpss_admin_register_head() { 
-	$wpss_url = WP_PLUGIN_URL . "/wordpress-simple-survey/";
-	$admin_css_url = $wpss_url . 'style.css'; 
-	echo '<link rel="stylesheet" type="text/css" href="'.$admin_css_url.'" />';
-}
-add_action('admin_head', 'wpss_admin_register_head');
+}add_action('wp_print_scripts', 'wpss_includeScripts');
 
 
 
-/*
+
+
+/**
+ *  Register CSS's for plugin
+ */
+function wpss_stylesheets() {
+  if(!is_admin()){
+	  wp_enqueue_style('wpss_style', WPSS_URL.'style.css');  
+	  wp_enqueue_style('wpss_uicore', WPSS_URL.'css/ui.core.css');
+	  wp_enqueue_style('wpss_uitheme', WPSS_URL.'css/ui.theme.css');
+	  wp_enqueue_style('wpss_probar', WPSS_URL.'css/ui.progressbar.css');
+  } 
+}add_action('wp_print_styles', 'wpss_stylesheets');
+
+
+
+
+
+/**
+ *  Register CSS for Admin Pages
+ */
+function wpss_admin_register_init(){
+	wp_enqueue_style('wpss_style', WPSS_URL.'style.css');
+  wp_enqueue_style('wpss_jquery_ui', WPSS_URL.'css/jquery-ui.css');
+}add_action('admin_init', 'wpss_admin_register_init');
+
+
+
+
+
+
+
+/**
+ *  Output JS for Admin Pages, admin_enqueue_scripts buggy 
+ */
+function wpss_admin_register_head(){
+  // NOTE:  wp_register_script doesnt want to work for admin pages
+  //        admin_enqueue_scripts doesnt exist on admin_init or admin_head
+  //        #wp_register_script('wpss_tip',WPSS_URL.'js/jquery.tools.min.js');		
+  //        #wp_enqueue_scripts('wpss_tip');
+
+	// only import tooltip when needed to avoid conflict with widget dragging js
+  $wpss_pages = array('wpss-results','wpss-setup');
+  if (in_array($_GET['page'],$wpss_pages)){ 
+    echo '<script type="text/javascript" src="'.WPSS_URL.'js/jquery.tools.min.js"></script>';
+    echo '<script type="text/javascript" src="'.WPSS_URL.'js/jquery-ui-full.min.js"></script>';  
+    wp_tiny_mce(true, array("editor_selector" => "wpss_tinyedit"));      
+    echo '<script type="text/javascript" src="'.WPSS_URL.'js/custom_backend.js"></script>';        
+  }      
+}add_action('admin_head', 'wpss_admin_register_head');
+
+
+
+
+
+
+/**
  *	Setup custom URL for plugin to POST quiz results to,
  *	Allows for proper access to 'global worpress' scope
  *	including database settings needed for tracking
  */
 function wpss_parse_request($wp) {
     // only process requests POST'ed to "/?wpss-routing=results"
-    if (array_key_exists('wpss-routing', $wp->query_vars) 
-            && $wp->query_vars['wpss-routing'] == 'results') {
-		include('quiz_submit.php');	
+    if (array_key_exists('wpss-routing', $wp->query_vars) && $wp->query_vars['wpss-routing'] == 'results') {
+  		include('submit_quiz.php');	
     }
-}
-add_action('parse_request', 'wpss_parse_request');
+}add_action('parse_request', 'wpss_parse_request');
 
 function wpss_parse_query_vars($vars) {
     $vars[] = 'wpss-routing';
     return $vars;
-}
-add_filter('query_vars', 'wpss_parse_query_vars');
-
+}add_filter('query_vars', 'wpss_parse_query_vars');
 
 ?>

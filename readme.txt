@@ -1,16 +1,16 @@
-=== WordPress Simple Survey ===
+=== Wordpress Simple Survey ===
 Contributors: richard_steeleagency
 Donate link: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
-Tags: survey, questionnaire, quiz, exam, test
-Requires at least: 2.8
-Tested up to: 3.01
-Stable tag: 1.5.4
+Tags: survey, questionnaire, quiz, poll, exam, test
+Requires at least: 3.1.1
+Tested up to: 3.1.1
+Stable tag: 2.0.0
 
-A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. 
+A jQuery-based plugin that displays a weighted survey, and then routes user to location based on score. 
 
 == Description ==
 
-Wordpress Simple Survey is a plugin that allows for the creation of a survey, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the Wordpress backend. The plugin is jQuery based which allows users to seamlessly and in graphically appealing manner, take the quiz without reloading the page. The survey questions and answers can be weighted so that some questions or answers count more than others, or all weights can be set to 1, so that each question counts the same. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. The plugin can also keep a record of all submissions and email results to a predefined email address.
+Wordpress Simple Survey is a plugin that allows for the creation of a survey, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. Each answer is given a weight (or score/points). Once a quiz is submitted, the user is taken to a predefined URL based on their score range; this page can be any URL including pages setup in WordPress that can contain information relevant to the particular scoring range, including the user's score and answer set. The plugin can also keep a record of all submissions and email results to a predefined email address. 
 
 
 * [Project Homepage](http://www.steele-agency.com/2010/08/wordpress-simple-survey/)
@@ -54,8 +54,8 @@ Add the string: [wp-simple-survey] to an article.
 
 == Changelog ==
 
-= 1.5.4 =
-* Fixed Firefox specific Next button issue
+= 2.0.0 =
+* Rewrote plugin allowing for multiple quizzes, better storage of answers, custom fields, and much more
 
 = 1.5.3 =
 * Fixed Next button bug on submit slide click trigger
