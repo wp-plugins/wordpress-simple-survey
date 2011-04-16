@@ -14,11 +14,11 @@ if($submit_quiz){
   $submitter_id = $_POST['submitter_id'];
   
   // get this quiz and associated questions and answers
-  $quiz = $wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB." WHERE id='$quiz_id' LIMIT 1;",ARRAY_A);
+  $quiz = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB." WHERE id='$quiz_id' LIMIT 1;",ARRAY_A));
   $quiz = $quiz[0];
-  $questions  = $wpdb->get_results("SELECT * FROM ".WPSS_QUESTIONS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A);
-  $answer_set = $wpdb->get_results("SELECT * FROM ".WPSS_ANSWERS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A);
-  $field_set  = $wpdb->get_results("SELECT * FROM ".WPSS_FIELDS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A);
+  $questions  = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_QUESTIONS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A));
+  $answer_set = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_ANSWERS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A));
+  $field_set  = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_FIELDS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A));
   
   $selected_ids = wpss_get_submitted_ids();
   $score = wpss_calculateScore($selected_ids,$answer_set);
@@ -72,14 +72,18 @@ if($submit_quiz){
       </p>
       <hr />
     '; 
-    foreach($quiz_summary as $qa){
-      $message .= '<p>'.$qa['question'].'<br />'.$qa['answer'].'<br />Points: '.$qa['weight'].'</p>';    
+    
+    if(!empty($quiz_summary)){
+      foreach($quiz_summary as $qa){
+        $message .= '<p>'.$qa['question'].'<br />'.$qa['answer'].'<br />Points: '.$qa['weight'].'</p>';    
+      }
     }
     $message .= '<hr />';    
-    foreach($field_summary as $user_data){
-      $message .= '<p>'.$user_data['name'].' '.$user_data['value'].'</p>';    
+    if(!empty($field_summary)){
+      foreach($field_summary as $user_data){
+        $message .= '<p>'.$user_data['name'].' '.$user_data['value'].'</p>';    
+      }
     }
-
     $headers = array('MIME-Version: 1.0','Content-type: text/html; charset="'.get_option('blog_charset').'"','From: '.$quiz['admin_email_addr'],'Reply-To: '.$quiz['admin_email_addr'],'X-Mailer: PHP/'. phpversion());
    
     wp_mail($quiz['admin_email_addr'],'New Quiz Submitted | '.$quiz['quiz_title'],$message,implode("\r\n",$headers)); 
@@ -95,9 +99,12 @@ if($submit_quiz){
     $auto_response = $quiz['user_email_content'];
 		$subject = "Thanks for taking the ".$quiz['quiz_title'];
 		
-		foreach($quiz_summary as $qa){
-      $recorded_qa .= '<p>'.$qa['question'].'<br />'.$qa['answer'].'<br />Points: '.$qa['weight'].'</p>';    
-    }
+		
+		if(!empty($quiz_summary)){
+		  foreach($quiz_summary as $qa){
+        $recorded_qa .= '<p>'.$qa['question'].'<br />'.$qa['answer'].'<br />Points: '.$qa['weight'].'</p>';    
+      }		
+		}
     
 		// replace tag strings with user's data
 		$auto_response = str_replace(array('[routed]','[score]','[quiztitle]','[answers]'),array($redirect_to['url'],$score,$quiz['quiz_title'],$recorded_qa),$auto_response);
@@ -114,11 +121,16 @@ if($submit_quiz){
       }
     }
   }
-	  
-	ob_start();
+	 
+	 
+	// NOTE: SYSTEM DEPENDENT HEADACHE
+	//ob_start();
   setcookie("wpss-submitter",$submitter_id);
 	wp_redirect(esc_url($redirect_to['url']));
-	ob_flush();
+	//ob_flush();
+	
+	
+	
 	exit;	die(); // ensure stop execution
 }
 die();

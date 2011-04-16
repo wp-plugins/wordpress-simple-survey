@@ -1,43 +1,43 @@
 <?php
+defined('WPSS_URL') or die('Restricted access');
+if (!current_user_can('publish_posts')) wp_die( __('You do not have sufficient permissions to access this page.') );
 
-	// No Direct Access
-  defined('WPSS_URL') or die('Restricted access');
-	if (!current_user_can('publish_posts')) wp_die( __('You do not have sufficient permissions to access this page.') );
-	global $wpdb;
+
+global $wpdb;
+
+// grab current quiz by unique id
+$cur_quizID = wpss_get_currentQuizID();
+
+/* create new question, answer, and route when requested */
+if($_POST['addquestion'] == 'add new question') wpss_add_newQuestion($cur_quizID);
+wpss_add_newAnswer($cur_quizID);
+if($_POST['addrange'] == 'add new range') wpss_add_newRange($cur_quizID);
+
+/* delete questions, answers and routes when requested */
+wpss_delete_unwanted();
+
+// Update Options if submitted and changed
+if($_POST['wpss_submit'] == 'submit' || $_POST['wpss_submit'] == 'Save Current Quiz') {
 	
-	// grab current quiz by unique id
-	$cur_quizID = get_currentQuizID();
+  // update questions, answers, routes, and fields
+  wpss_save_quiz($cur_quizID);       
 
-	/* create new question, answer, and route when requested */
-	if($_POST['addquestion'] == 'add new question') add_newQuestion($cur_quizID);
-	add_newAnswer($cur_quizID);
-  if($_POST['addrange'] == 'add new range') add_newRange($cur_quizID);
-  
-  /* delete questions, answers and routes when requested */
-  wpss_delete_unwanted();
+	// update database with quiz options
+	wpss_save_quiz_options($cur_quizID);
+	?>
+	<div class="updated"><p><strong><?php _e('Options saved.'); ?></strong></p></div>
+	<?php
+	$wpdb->flush(); // flush MySQL Cache
+}
 
-	// Update Options if submitted and changed
-	if($_POST['wpss_submit'] == 'submit' || $_POST['wpss_submit'] == 'Save Current Quiz') {
-		
-    // update questions, answers, routes, and fields
-    wpss_save_quiz($cur_quizID);       
+// grab current Quiz from database after update as Array
+$cur_quiz = wpss_getQuizOptions($cur_quizID);
 
-		// update database with quiz options
-		wpss_save_quiz_options($cur_quizID);
-		?>
-		<div class="updated"><p><strong><?php _e('Options saved.'); ?></strong></p></div>
-		<?php
-		$wpdb->flush(); // flush MySQL Cache
-	}
-
-	// grab current Quiz from database after update as Array
-	$cur_quiz = getQuizOptions($cur_quizID);
-
-	/* grab arrays containing current data for current quiz */
-	$questions  = get_Questions($cur_quizID);
-	$answers	  = get_Answers($cur_quizID);
-	$routes 	  = get_Routes($cur_quizID);
-  $fields 	  = get_Fields($cur_quizID);
+/* grab arrays containing current data for current quiz */
+$questions  = wpss_get_Questions($cur_quizID);
+$answers	  = wpss_get_Answers($cur_quizID);
+$routes 	  = wpss_get_Routes($cur_quizID);
+$fields 	  = wpss_get_Fields($cur_quizID);
 ?>
 
 <div class="wrap">
@@ -175,7 +175,7 @@
 				<!-- Output Answers Table-->
 				  <table class="wpss_admin_answers_table" border="1">
           <?php 
-            $ans_group = get_answer($answers,$question['id']);          
+            $ans_group = wpss_get_answer($answers,$question['id']);          
             foreach($ans_group as $ans_array => $answer){ ?>
               <tr>
                 <!-- Answer -->

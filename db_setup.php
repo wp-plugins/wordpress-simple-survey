@@ -121,7 +121,7 @@ function wpss_plugin_install() {
 
   // create first quiz and question upon activation
   $quizzes = $wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB, ARRAY_A);
-  if(!count($quizzes)) createNewQuiz();
+  if(!count($quizzes)) wpss_createNewQuiz();
 
 	add_option("wpss_extended_db_version",WPSS_EXTENDED_DB_VERSION);
 }

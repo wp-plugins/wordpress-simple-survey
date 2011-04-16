@@ -8,7 +8,7 @@ defined('WPSS_URL') or die('Restricted access');
  *	Creates new quiz with default settings
  *  Stores new quiz in DB with new :id
  */
-function createNewQuiz(){
+function wpss_createNewQuiz(){
 	global $wpdb;
 	// grab logged-user's info for prefill
 	global $current_user; get_currentuserinfo();
@@ -46,7 +46,7 @@ function createNewQuiz(){
  *  Get lowest quiz ID
  *	@return int
  */
-function get_firstQuizID(){
+function wpss_get_firstQuizID(){
 	global $wpdb;
 	$quizzes = $wpdb->get_results( "SELECT * FROM ".WPSS_QUIZZES_DB,ARRAY_A);
 	// insert first question
@@ -90,14 +90,14 @@ function print_quizIDList($id,$page){
  *
  *	@return int current quiz_id
  */
-function get_currentQuizID(){
+function wpss_get_currentQuizID(){
 	global $wpdb;
 	if(is_numeric($_GET['quiz'])) return $_GET['quiz'];
 	if($_GET['quiz']=="new"){
     $newest_quiz = $wpdb->get_row("SELECT `id` FROM `".WPSS_QUIZZES_DB."` ORDER BY `id` DESC LIMIT 1",ARRAY_A );
     return $newest_quiz['id'];
 	}
-	return get_firstQuizID();
+	return wpss_get_firstQuizID();
 }
 
 
@@ -108,7 +108,7 @@ function get_currentQuizID(){
  *  Quiz options for quiz with ID = $id
  *	@return array quiz row from DB 
  */
-function getQuizOptions($id){
+function wpss_getQuizOptions($id){
 	global $wpdb;
 	$row = $wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB." WHERE id = '$id'",ARRAY_A);
 	return stripslashes_deep($row[0]);
@@ -122,7 +122,7 @@ function getQuizOptions($id){
  *  Questions with matchin quiz_id
  *	@return array
  */
-function get_Questions($quiz_id){
+function wpss_get_Questions($quiz_id){
   global $wpdb;    
   $q_s = $wpdb->get_results("SELECT * FROM ".WPSS_QUESTIONS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC;",ARRAY_A);
   return stripslashes_deep($q_s);
@@ -136,7 +136,7 @@ function get_Questions($quiz_id){
  *  Answers with matching quiz_id
  *	@return array
  */
-function get_Answers($quiz_id){
+function wpss_get_Answers($quiz_id){
   global $wpdb;    
   $a_s = $wpdb->get_results("SELECT * FROM ".WPSS_ANSWERS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A);
   return stripslashes_deep($a_s);
@@ -149,7 +149,7 @@ function get_Answers($quiz_id){
  *  Fields with matching quiz_id
  *	@return array
  */
-function get_Fields($quiz_id){
+function wpss_get_Fields($quiz_id){
   global $wpdb;    
   $f_s = $wpdb->get_results("SELECT * FROM ".WPSS_FIELDS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A);
   return stripslashes_deep($f_s);
@@ -163,7 +163,7 @@ function get_Fields($quiz_id){
  *  Answers grouped by submission
  *	@return array 
  */
-function get_Submissions($quiz_id){
+function wpss_get_Submissions($quiz_id){
   global $wpdb;    
 	$answers = 	$wpdb->get_results( "SELECT * FROM ".WPSS_RESULTS_DB." WHERE quiz_id='$quiz_id'",ARRAY_A);
 	$unique_ids = $wpdb->get_results( "SELECT DISTINCT submitter_id FROM ".WPSS_RESULTS_DB." WHERE quiz_id='$quiz_id'",ARRAY_A);
@@ -186,7 +186,7 @@ function get_Submissions($quiz_id){
  *  Answers for a particular question
  *	@return array 
  */
-function get_answer(&$answers,$question_id){
+function wpss_get_answer(&$answers,$question_id){
   foreach($answers as $answer){
     if($answer['question_id'] == $question_id) $ans[] = $answer;
   }
@@ -200,7 +200,7 @@ function get_answer(&$answers,$question_id){
 /**
  *  @return array Routes with matching quiz_id
  */
-function get_Routes($quiz_id){
+function wpss_get_Routes($quiz_id){
   global $wpdb;    
   $routes = $wpdb->get_results("SELECT * FROM ".WPSS_ROUTES_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC;",ARRAY_A);
   return $routes;
@@ -290,7 +290,7 @@ function wpss_save_quiz_options($quiz_id){
  *	Adds new question to quiz when requested, adds first answer
  *	and stores in the database
  */
-function add_newQuestion($quiz_id){
+function wpss_add_newQuestion($quiz_id){
   global $wpdb;  
   $wpdb->insert(WPSS_QUESTIONS_DB, array('question'=>'Insert New Question','quiz_id'=>$quiz_id) );
   
@@ -307,7 +307,7 @@ function add_newQuestion($quiz_id){
  *	Adds new answer for question in a quiz
  *  and stores in the database
  */
-function add_newAnswer($quiz_id){
+function wpss_add_newAnswer($quiz_id){
   global $wpdb;
   foreach($_POST as $name => $question_id ){
     // get question and answer is from 
@@ -326,7 +326,7 @@ function add_newAnswer($quiz_id){
  *	Adds new range-route for quiz scores
  *  and stores in the database
  */
-function add_newRange($quiz_id){
+function wpss_add_newRange($quiz_id){
   global $wpdb;
   $wpdb->insert(WPSS_ROUTES_DB, array('from_score'=>'','to_score'=>'','url'=>'Insert a URL to a page for this scoring range','quiz_id'=>$quiz_id ) );
 }

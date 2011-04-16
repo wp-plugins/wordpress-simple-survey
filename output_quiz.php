@@ -10,10 +10,12 @@ function wpss_getQuiz($quiz_id){
   global $wpdb;    
  
   // get this quiz and associated questions and answers
-  $quiz = $wpdb->get_row("SELECT * FROM ".WPSS_QUIZZES_DB." WHERE id='$quiz_id'",ARRAY_A);
-  $questions  = $wpdb->get_results("SELECT * FROM ".WPSS_QUESTIONS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A);
-  $answer_set = $wpdb->get_results("SELECT * FROM ".WPSS_ANSWERS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A);
+  $quiz = stripslashes_deep($wpdb->get_row("SELECT * FROM ".WPSS_QUIZZES_DB." WHERE id='$quiz_id'",ARRAY_A));
+  $questions  = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_QUESTIONS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A));
+  $answer_set = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_ANSWERS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A));
 
+
+  // Don't forget to donate and chip in
 	$retQuiz .= '
 	<!-- WordPress Simple Survey | Copyright Steele Agency, Inc. (http://steele-agency.com) -->
 	<div id="wpss_survey">
@@ -60,7 +62,7 @@ function wpss_getQuiz($quiz_id){
 				<input type="hidden" name="submitter_id" value="'.uniqid("wpss_").'" />';
 
         // include fields for collecting user data
-        if($quiz['record_submit_info']) $retQuiz .= getUserInfo($quiz['id']);
+        if($quiz['record_submit_info']) $retQuiz .= wpss_getUserInfo($quiz['id']);
 
         $retQuiz .= '        
         <input type="hidden" name="wpss_submit_quiz" value="1" />
@@ -81,12 +83,12 @@ function wpss_getQuiz($quiz_id){
 }
 
 
-function getUserInfo($quiz_id){
+function wpss_getUserInfo($quiz_id){
 
   global $wpdb;
 	global $current_user; get_currentuserinfo();
 
-  $fields = $wpdb->get_results("SELECT * FROM ".WPSS_FIELDS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A);
+  $fields = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_FIELDS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A));
   $info_form .= '<div id="user_info" class="infoForm">';
 
   foreach($fields as $field){

@@ -4,21 +4,21 @@
 	if (!current_user_can('publish_posts')) wp_die( __('You do not have sufficient permissions to access this page.') );
   global $wpdb;
   
-	$wpdb->show_errors(); 
+	//$wpdb->show_errors(); 
 	  
   // delete unwanted results
   wpss_delete_Results();
   
 	// grab current quiz by unique id
-	$cur_quizID = get_currentQuizID();
+	$cur_quizID = wpss_get_currentQuizID();
 	
 	// grab current Quiz from database
-	$cur_quiz = getQuizOptions($cur_quizID);
-	$questions  = get_Questions($cur_quizID);
-	$answers	= get_Answers($cur_quizID);	
+	$cur_quiz = wpss_getQuizOptions($cur_quizID);
+	$questions  = wpss_get_Questions($cur_quizID);
+	$answers	= wpss_get_Answers($cur_quizID);	
 
 	/* grab array containing current quiz submissions */
-  $submissions = get_Submissions($cur_quizID);
+  $submissions = wpss_get_Submissions($cur_quizID);
   $num_submissions = count($submissions);
   $num_questions = count($questions);
   $avg_score = wpss_averageScore($submissions,$num_submissions,$num_questions,$answers);

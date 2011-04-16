@@ -1,7 +1,9 @@
 <?php
-// no direct access
-if (!current_user_can('publish_posts')) wp_die( __('You do not have sufficient permissions to access this page.') );
+defined('WPSS_URL') or die('Restricted access');
+if (!current_user_can('publish_posts')) die( __('You do not have sufficient permissions to access this page.') );
+
 ?>
+
 
 <div id="wpss_help" class="wpss_results wrap">
 	<div id="icon-plugins" class="icon32"></div>
@@ -42,7 +44,7 @@ if (!current_user_can('publish_posts')) wp_die( __('You do not have sufficient p
   <div id="quiz_summary_main">
     <p><strong>WordPress Simple Survey</strong> is a plugin that allows for the creation of a survey, quiz, poll, or questionnaire and the tracking of user submissions.</p>
     </p>Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. Custom fields can be created to allow tracking of custom information. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. The survey answers are weighted so that some questions or answers can count more than others. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. This URL can be a previously setup page within WordPress or to a third party website containing pertinent information related to the user's score. Users can also be routed to WordPress pages that have their score and answers.</p>
-
+    <p>The Extended version can be purchased <a href="http://www.steele-agency.com/2011/04/wordpress-simple-survey-extended">here</a>.</p>
   
 		<h2>Features</h2>
 		<br clear="all" />
@@ -60,48 +62,48 @@ if (!current_user_can('publish_posts')) wp_die( __('You do not have sufficient p
       <tbody>
         <tr>
           <td>Store Quiz Results In Database</td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
         </tr>
         <tr>
           <td>View Quiz Results Summary</td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
         </tr> 
         <tr>
           <td>Email Each Quiz Result To Admin</td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
-        </tr>                  
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
+        </tr> 
         <tr>
           <td>Auto-Respond to users</td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
-        </tr>          
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
+        </tr>                           
         <tr>
           <td>Multiple answers per question</td>
           <td align="center"></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
         </tr>
         <tr>
-          <td><strong>Multiple Quizzes</strong></td>
+          <td>Multiple Quizzes</td>
           <td align="center"></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
         </tr>
         <tr>
           <td>Put users score on routed-to page</td>
           <td align="center"></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
         </tr>
         <tr>
           <td>Export Results</td>
           <td align="center"></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
         </tr> 
         <tr>
           <td>Delete/Clear Results</td>
           <td align="center"></td>
-          <td align="center"><img src="<?php echo WPSS_URL;?>/images/check.png" /></td>
+          <td align="center"><img src="<?php echo WPSS_URL;?>images/check.png" /></td>
         </tr> 
       </tbody>
     </table>  
