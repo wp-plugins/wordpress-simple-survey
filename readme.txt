@@ -5,7 +5,7 @@ Tags: survey, questionnaire, quiz, poll, exam, test
 Requires at least: 3.1.1
 Tested up to: 3.1.1
 Stable tag: 2.0.0
-Version: 2.0.1
+
 
 A jQuery-based plugin that displays a weighted survey, and then routes user to location based on score. 
 
