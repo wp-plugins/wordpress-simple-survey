@@ -5,6 +5,7 @@ Tags: survey, questionnaire, quiz, poll, exam, test
 Requires at least: 3.1.1
 Tested up to: 3.1.1
 Stable tag: 2.0.0
+Version: 2.0.1
 
 A jQuery-based plugin that displays a weighted survey, and then routes user to location based on score. 
 
@@ -15,6 +16,7 @@ Wordpress Simple Survey is a plugin that allows for the creation of a survey, qu
 
 * [Project Homepage](http://www.steele-agency.com/2010/08/wordpress-simple-survey/)
 * [Support](http://www.steele-agency.com/2010/08/wordpress-simple-survey/#comments)
+* [Extended Version](http://www.steele-agency.com/2011/04/wordpress-simple-survey-extended/)
 
 == Installation ==
 
