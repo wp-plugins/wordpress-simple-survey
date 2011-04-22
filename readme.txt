@@ -1,7 +1,7 @@
 === Wordpress Simple Survey ===
 Contributors: richard_steeleagency
 Donate link: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
-Tags: survey, questionnaire, quiz, poll, exam, test
+Tags: survey, quiz, poll, exam, test, questionnaire
 Requires at least: 3.1.1
 Tested up to: 3.1.1
 Stable tag: 2.0.0
@@ -11,7 +11,7 @@ A jQuery-based plugin that displays a weighted survey, and then routes user to l
 
 == Description ==
 
-Wordpress Simple Survey is a plugin that allows for the creation of a survey, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. Each answer is given a weight (or score/points). Once a quiz is submitted, the user is taken to a predefined URL based on their score range; this page can be any URL including pages setup in WordPress that can contain information relevant to the particular scoring range, including the user's score and answer set. The plugin can also keep a record of all submissions and email results to a predefined email address. 
+Wordpress Simple Survey is a plugin that allows for the creation of a survey, poll, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. Each answer is given a weight (or score/points). Once a quiz is submitted, the user is taken to a predefined URL based on their score range; this page can be any URL including pages setup in WordPress that can contain information relevant to the particular scoring range, including the user's score and answer set. The plugin can also keep a record of all submissions and email results to a predefined email address. 
 
 
 * [Project Homepage](http://www.steele-agency.com/2010/08/wordpress-simple-survey/)
@@ -55,6 +55,9 @@ Add the string: [wp-simple-survey] to an article.
 7. Diagram
 
 == Changelog ==
+
+= 2.0.2 =
+* Reluctantly added ability to turn of properly imported jQuery do to harded imports in poorly written themes and plugins. API? What's that?
 
 = 2.0.0 =
 * Rewrote plugin allowing for multiple quizzes, better storage of answers, custom fields, and much more
