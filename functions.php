@@ -416,16 +416,23 @@ function wpss_averageScore(&$submissions,$num_submissions,$num_questions,&$answe
   foreach($answers as $answer){
     $total_possible_points += $answer['weight'];
   }
-  foreach($submissions as $submission){
-    foreach($submission as $result){
-      $total_points_earned += $result['weight'];
-    }
+  if(!empty($submissions)){
+    foreach($submissions as $submission){
+      foreach($submission as $result){
+        $total_points_earned += $result['weight'];
+      }
+    }  
   }
-  $avg_points = $total_points_earned/$num_submissions;
-  $avg_score = $total_points_earned/($num_submissions*$total_possible_points);
+  if($num_submissions > 0){
+    $avg_points = $total_points_earned/$num_submissions;
+    $avg_score = $total_points_earned/($num_submissions*$total_possible_points);
+  }
+  else{
+    $avg_points = 0; $avg_score = 0;
+  }
+
   return array('avg_points'=>$avg_points,'avg_score'=>$avg_score);
 }
-
 
 
 

@@ -62,52 +62,54 @@
   <div id="quiz_summary_main">
 
     <div id="quiz_summary_holder">    
-    <?php foreach($submissions as $submission){ ?>
-      
-      <h2><a href="#">WPSS Result | Score: <?php echo $submission[0]['total_score'];?>, Time: <?php echo $submission[0]['submitted_at'];?></a></h2><div>
-             
-      <!-- Questions and Answers -->
-      <h2 class="summary">User's Answers</h2>
-      <form style="float:right" action="" method="POST">
-		    <input class="wpss_remove" type="submit" style="float:right" name="wpss_del_result_<?php echo $submission[0]['submitter_id'];?>" value="Delete this Result" onClick="return confirm('Are you sure you want to delete this submission?')" />
-		  </form> 
-      <?php foreach($submission as $answer_field){ ?>
-        <ul>
-        <?php if($answer_field['type']=='answer'){ ?>
-          <li><?php echo $answer_field['question_txt'];?>
-            <ul>
-              <li><?php echo $answer_field['choice_txt'].' '.$answer_field['weight'];?></li>
-            </ul>
-          </li><?php
+    <?php if(!empty($submissions)): ?>    
+    
+      <?php foreach($submissions as $submission){ ?>
+        
+        <h2><a href="#">WPSS Result | Score: <?php echo $submission[0]['total_score'];?>, Time: <?php echo $submission[0]['submitted_at'];?></a></h2><div>
+               
+        <!-- Questions and Answers -->
+        <h2 class="summary">User's Answers</h2>
+        <form style="float:right" action="" method="POST">
+		      <input class="wpss_remove" type="submit" style="float:right" name="wpss_del_result_<?php echo $submission[0]['submitter_id'];?>" value="Delete this Result" onClick="return confirm('Are you sure you want to delete this submission?')" />
+		    </form> 
+        <?php foreach($submission as $answer_field){ ?>
+          <ul>
+          <?php if($answer_field['type']=='answer'){ ?>
+            <li><?php echo $answer_field['question_txt'];?>
+              <ul>
+                <li><?php echo $answer_field['choice_txt'].' '.$answer_field['weight'];?></li>
+              </ul>
+            </li><?php
+          } ?>
+          </ul><?php
         } ?>
-        </ul><?php
-      } ?>
-      <!-- End Q&A's -->      
-      
-      <!-- User's Info -->
-      <h2 class="summary">User's Data</h2>
-      <?php foreach($submission as $answer_field){ ?>
+        <!-- End Q&A's -->      
+        
+        <!-- User's Info -->
+        <h2 class="summary">User's Data</h2>
+        <?php foreach($submission as $answer_field){ ?>
+          <ul>
+          <?php if($answer_field['type']=='field'){ ?>
+            <li><?php echo $answer_field['field_name'].' '.$answer_field['field_value'];?></li><?php
+          } ?>
+          </ul><?php
+        } ?> 
+        <!-- End User's Info -->
+         
+        <!-- Quiz Info --> 
         <ul>
-        <?php if($answer_field['type']=='field'){ ?>
-          <li><?php echo $answer_field['field_name'].' '.$answer_field['field_value'];?></li><?php
-        } ?>
-        </ul><?php
-      } ?> 
-      <!-- End User's Info -->
-       
-      <!-- Quiz Info --> 
-      <ul>
-        <li>Score: <?php echo $submission[0]['total_score'];?></li>
-        <li>Taken: <?php echo $submission[0]['submitted_at'];?></li>
-        <li>IP Address: <?php echo $submission[0]['ip_address'];?></li>        
-      </ul>
-      <!-- End Quiz Info -->   
-      
-      
-      </div> 
-    <?php 
-    }
-    ?>
+          <li>Score: <?php echo $submission[0]['total_score'];?></li>
+          <li>Taken: <?php echo $submission[0]['submitted_at'];?></li>
+          <li>IP Address: <?php echo $submission[0]['ip_address'];?></li>        
+        </ul>
+        <!-- End Quiz Info -->   
+                
+        </div> 
+      <?php } ?>
+    
+    <?php endif;?>
+
     </div> 
     
   </div><!-- End Results -->

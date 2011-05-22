@@ -56,6 +56,9 @@ Add the string: [wp-simple-survey] to an article.
 
 == Changelog ==
 
+= 2.0.3 =
+* Inserted code to prevent errors on foreach for uninitialized variables
+
 = 2.0.2 =
 * Reluctantly added ability to turn of properly imported jQuery do to harded imports in poorly written themes and plugins. API? What's that?
 
@@ -96,6 +99,9 @@ Add the string: [wp-simple-survey] to an article.
 * Originating version.
 
 == Upgrade Notice ==
+
+= 2.0.0 =
+When upgrading to 2.0.0 from 1.5, quizzes will have to be re-inserted
 
 = 1.4 =
 Improved mail() function and admin CSS
