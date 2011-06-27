@@ -3,8 +3,8 @@ Contributors: richard_steeleagency
 Donate link: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
 Tags: survey, quiz, poll, exam, test, questionnaire
 Requires at least: 3.1.1
-Tested up to: 3.1.1
-Stable tag: 2.0.0
+Tested up to: 3.1.3
+Stable tag: 2.1.0
 
 
 A jQuery-based plugin that displays a weighted survey, and then routes user to location based on score. 
@@ -55,6 +55,9 @@ Add the string: [wp-simple-survey] to an article.
 7. Diagram
 
 == Changelog ==
+
+= 2.1.0 =
+* Added admin control for add_filter priority
 
 = 2.0.3 =
 * Inserted code to prevent errors on foreach for uninitialized variables
@@ -117,14 +120,3 @@ Changed jQueryUI import method to ensure that only one copy is being registered
 
 = 1.0 =
 None
-
-== Markdown ==
-
-Order:
-
-1. Outputs a Quiz
-2. Tracks User Submissions
-3. Route user to location based on results
-
-[Steele Agency]: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
-            "Plugin URL"

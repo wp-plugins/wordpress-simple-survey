@@ -67,8 +67,6 @@
 
 /* Label - Answers, Answer set Style */
 #wpss_survey .form-panel label { 
-/*	width:440px;*/
-/*	vertical-align: middle;*/
   width:415px;
   float:right;
   padding:0;margin: 0px;
@@ -690,6 +688,20 @@ input.wpss_clear_results{
 /*  Global options page
 ------------------------------------------------*/
 #wpss_togglejquery{
+  border:1px #DFDFDF solid;
+  padding-left:10px;
+  padding-right:10px;  
+  width:60%;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
+  background: #ffffff; /* old browsers */
+  background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* firefox */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#e5e5e5)); /* webkit */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* ie */
+  background: -o-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* opera */
+}
+.wpss_global_options_form{
   border:1px #DFDFDF solid;
   padding-left:10px;
   padding-right:10px;  

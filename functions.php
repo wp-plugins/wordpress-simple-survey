@@ -438,6 +438,8 @@ function wpss_averageScore(&$submissions,$num_submissions,$num_questions,&$answe
 
 /*  Output Quiz Functions
 --------------------------------------------------------*/
+$wpss_priority = get_option('wpss_filter_priority');
+
 
 /**
  *	Filter out special strings and replace
@@ -451,7 +453,7 @@ function wpss_QuizzesFilter($content) {
     $content = str_replace('[wp-simple-survey-'.$quiz['id'].']',wpss_getQuiz($quiz['id']),$content);  
   }
 	return $content;
-}add_filter('the_content', 'wpss_QuizzesFilter');
+}add_filter('the_content', 'wpss_QuizzesFilter',empty($wpss_priority)? 10 : $wpss_priority);
 
 // Filter Content for score string: [wp-simple-survey-score]
 function wpss_results_score_filter($content) {
