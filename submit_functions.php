@@ -25,7 +25,7 @@ function wpss_get_submitted_ids(){
 
 
 /**
- *	@return   float  weight of an answer
+ *  @return   float  weight of an answer
  */
 function wpss_get_weight($answer_id,&$answers){
   foreach($answers as $answer){
@@ -38,7 +38,7 @@ function wpss_get_weight($answer_id,&$answers){
 
 
 /**
- *	@return user's score
+ *  @return user's score
  */
 function wpss_calculateScore(&$selected_ids,&$answer_set){
   foreach($selected_ids as $choice_id){

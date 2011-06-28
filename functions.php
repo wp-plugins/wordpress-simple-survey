@@ -5,15 +5,15 @@ defined('WPSS_URL') or die('Restricted access');
 
 
 /**
- *	Creates new quiz with default settings
+ *  Creates new quiz with default settings
  *  Stores new quiz in DB with new :id
  */
 function wpss_createNewQuiz(){
-	global $wpdb;
-	// grab logged-user's info for prefill
-	global $current_user; get_currentuserinfo();
-	
-	// create new quiz with default new quiz values
+  global $wpdb;
+  // grab logged-user's info for prefill
+  global $current_user; get_currentuserinfo();
+  
+  // create new quiz with default new quiz values
   $defaults = array('submit_button_txt'=>'Click to Submit','store_results'=>'1','store_results'=>'1','send_admin_email'=>'1','admin_email_addr'=>$current_user->user_email,'user_email_from_name'=>'WP-Simple-Survey','integrate_wplogin'=>'1','record_submit_info'=>'1','send_user_email'=>'1','user_email_from_address'=>$current_user->user_email,'user_email_content'=>'<p>Thank you for taking our [quiztitle]</p><p>You scored [score] and were routed to:<br />[routed]</p><p>Summary:</p>[answers]');  
   $wpdb->insert(WPSS_QUIZZES_DB,$defaults);
   $new_quiz_id = $wpdb->insert_id;
@@ -35,7 +35,7 @@ function wpss_createNewQuiz(){
   $wpdb->insert(WPSS_FIELDS_DB, array('name'=>'Name:','required'=>1,'quiz_id'=>$new_quiz_id ) );
   $wpdb->insert(WPSS_FIELDS_DB, array('name'=>'Email:','required'=>1,'quiz_id'=>$new_quiz_id) ); 
  
-	$wpdb->flush();
+  $wpdb->flush();
 }
 
 
@@ -44,17 +44,17 @@ function wpss_createNewQuiz(){
 
 /**
  *  Get lowest quiz ID
- *	@return int
+ *  @return int
  */
 function wpss_get_firstQuizID(){
-	global $wpdb;
-	$quizzes = $wpdb->get_results( "SELECT * FROM ".WPSS_QUIZZES_DB,ARRAY_A);
-	// insert first question
-	if(count($quizzes)===0){
-		createNewQuiz();	 	 				 
-  	$quizzes = $wpdb->get_results( "SELECT * FROM ".WPSS_QUIZZES_DB,ARRAY_A);
-	}
-	return $quizzes[0]['id'];
+  global $wpdb;
+  $quizzes = $wpdb->get_results( "SELECT * FROM ".WPSS_QUIZZES_DB,ARRAY_A);
+  // insert first question
+  if(count($quizzes)===0){
+    createNewQuiz();               
+    $quizzes = $wpdb->get_results( "SELECT * FROM ".WPSS_QUIZZES_DB,ARRAY_A);
+  }
+  return $quizzes[0]['id'];
 }
 
 
@@ -63,21 +63,21 @@ function wpss_get_firstQuizID(){
 
 /**
  *  HTML list elements foreach quiz link and puts class on current
- *	@return string/html
+ *  @return string/html
  */
 function print_quizIDList($id,$page){
-	global $wpdb;
-	$quizzes = $wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB, ARRAY_A);
+  global $wpdb;
+  $quizzes = $wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB, ARRAY_A);
 
-	foreach($quizzes as $q){
-	  if($q['id']==$id){
+  foreach($quizzes as $q){
+    if($q['id']==$id){
       $list .= '<li class="current"><a href="?page='.$page.'&quiz='.$q['id'].'">Quiz-'.$q['id'].'</a>|</li>';
-	  }
-	  else{
-			$list .= '<li><a href="?page='.$page.'&quiz='.$q['id'].'">Quiz-'.$q['id'].'</a>|</li>';
-	  }
-	}	
-	echo $list;
+    }
+    else{
+      $list .= '<li><a href="?page='.$page.'&quiz='.$q['id'].'">Quiz-'.$q['id'].'</a>|</li>';
+    }
+  }  
+  echo $list;
 }
 
 
@@ -88,16 +88,16 @@ function print_quizIDList($id,$page){
  *  Current quiz ID, newest quiz id for new quiz request or
  *  $_GET's current quiz, or fresh open id
  *
- *	@return int current quiz_id
+ *  @return int current quiz_id
  */
 function wpss_get_currentQuizID(){
-	global $wpdb;
-	if(is_numeric($_GET['quiz'])) return $_GET['quiz'];
-	if($_GET['quiz']=="new"){
+  global $wpdb;
+  if(is_numeric($_GET['quiz'])) return $_GET['quiz'];
+  if($_GET['quiz']=="new"){
     $newest_quiz = $wpdb->get_row("SELECT `id` FROM `".WPSS_QUIZZES_DB."` ORDER BY `id` DESC LIMIT 1",ARRAY_A );
     return $newest_quiz['id'];
-	}
-	return wpss_get_firstQuizID();
+  }
+  return wpss_get_firstQuizID();
 }
 
 
@@ -106,12 +106,12 @@ function wpss_get_currentQuizID(){
 
 /**
  *  Quiz options for quiz with ID = $id
- *	@return array quiz row from DB 
+ *  @return array quiz row from DB 
  */
 function wpss_getQuizOptions($id){
-	global $wpdb;
-	$row = $wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB." WHERE id = '$id'",ARRAY_A);
-	return stripslashes_deep($row[0]);
+  global $wpdb;
+  $row = $wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB." WHERE id = '$id'",ARRAY_A);
+  return stripslashes_deep($row[0]);
 }
 
 
@@ -120,7 +120,7 @@ function wpss_getQuizOptions($id){
 
 /**
  *  Questions with matchin quiz_id
- *	@return array
+ *  @return array
  */
 function wpss_get_Questions($quiz_id){
   global $wpdb;    
@@ -134,7 +134,7 @@ function wpss_get_Questions($quiz_id){
 
 /**
  *  Answers with matching quiz_id
- *	@return array
+ *  @return array
  */
 function wpss_get_Answers($quiz_id){
   global $wpdb;    
@@ -147,7 +147,7 @@ function wpss_get_Answers($quiz_id){
 
 /**
  *  Fields with matching quiz_id
- *	@return array
+ *  @return array
  */
 function wpss_get_Fields($quiz_id){
   global $wpdb;    
@@ -161,20 +161,20 @@ function wpss_get_Fields($quiz_id){
 
 /**
  *  Answers grouped by submission
- *	@return array 
+ *  @return array 
  */
 function wpss_get_Submissions($quiz_id){
   global $wpdb;    
-	$answers = 	$wpdb->get_results( "SELECT * FROM ".WPSS_RESULTS_DB." WHERE quiz_id='$quiz_id'",ARRAY_A);
-	$unique_ids = $wpdb->get_results( "SELECT DISTINCT submitter_id FROM ".WPSS_RESULTS_DB." WHERE quiz_id='$quiz_id'",ARRAY_A);
+  $answers =   $wpdb->get_results( "SELECT * FROM ".WPSS_RESULTS_DB." WHERE quiz_id='$quiz_id'",ARRAY_A);
+  $unique_ids = $wpdb->get_results( "SELECT DISTINCT submitter_id FROM ".WPSS_RESULTS_DB." WHERE quiz_id='$quiz_id'",ARRAY_A);
 
-	foreach($unique_ids as $id){
-	  foreach($answers as $answer){
-	    if($answer['submitter_id']==$id['submitter_id']) $answer_group[] = $answer;
-	  }
+  foreach($unique_ids as $id){
+    foreach($answers as $answer){
+      if($answer['submitter_id']==$id['submitter_id']) $answer_group[] = $answer;
+    }
     $submissions[] = $answer_group;
-	  $answer_group = array();	  
-	}
+    $answer_group = array();    
+  }
   return $submissions;
 }
 
@@ -184,7 +184,7 @@ function wpss_get_Submissions($quiz_id){
 
 /**
  *  Answers for a particular question
- *	@return array 
+ *  @return array 
  */
 function wpss_get_answer(&$answers,$question_id){
   foreach($answers as $answer){
@@ -287,8 +287,8 @@ function wpss_save_quiz_options($quiz_id){
 
 
 /**
- *	Adds new question to quiz when requested, adds first answer
- *	and stores in the database
+ *  Adds new question to quiz when requested, adds first answer
+ *  and stores in the database
  */
 function wpss_add_newQuestion($quiz_id){
   global $wpdb;  
@@ -304,7 +304,7 @@ function wpss_add_newQuestion($quiz_id){
 
 
 /**
- *	Adds new answer for question in a quiz
+ *  Adds new answer for question in a quiz
  *  and stores in the database
  */
 function wpss_add_newAnswer($quiz_id){
@@ -323,7 +323,7 @@ function wpss_add_newAnswer($quiz_id){
 
 
 /**
- *	Adds new range-route for quiz scores
+ *  Adds new range-route for quiz scores
  *  and stores in the database
  */
 function wpss_add_newRange($quiz_id){
@@ -336,7 +336,7 @@ function wpss_add_newRange($quiz_id){
 
 
 /**
- *	Cycles through all $_POST names 
+ *  Cycles through all $_POST names 
  *  looking for delete key: "wpss_del_"
  *  wpss_del_{question,answer,route,quiz}_{id}
  */
@@ -372,7 +372,7 @@ function wpss_delete_unwanted(){
 
 
 /**
- *	Cycles through all $_POST names 
+ *  Cycles through all $_POST names 
  *  looking delete key: "wpss_del_result_{id}"
  *  and deletes results row with associate id
  */
@@ -395,8 +395,8 @@ function wpss_delete_Results(){
 
 
 /**
- *	Gets array row by key=>value
- *	@return array
+ *  Gets array row by key=>value
+ *  @return array
  */
 function wpss_array_trim($key,$value,&$array){
   foreach($array as $n => $row){
@@ -409,8 +409,8 @@ function wpss_array_trim($key,$value,&$array){
 
 
 /**
- *	Calculate average score and percentage
- *	@return array
+ *  Calculate average score and percentage
+ *  @return array
  */
 function wpss_averageScore(&$submissions,$num_submissions,$num_questions,&$answers){
   foreach($answers as $answer){
@@ -442,8 +442,8 @@ $wpss_priority = get_option('wpss_filter_priority');
 
 
 /**
- *	Filter out special strings and replace
- *	with data for outputted quizzes and emails
+ *  Filter out special strings and replace
+ *  with data for outputted quizzes and emails
  */
 // Filter Content for quiz string: [wp-simple-survey-{id}]
 function wpss_QuizzesFilter($content) {
@@ -452,17 +452,17 @@ function wpss_QuizzesFilter($content) {
   foreach($quiz_ids as $quiz){
     $content = str_replace('[wp-simple-survey-'.$quiz['id'].']',wpss_getQuiz($quiz['id']),$content);  
   }
-	return $content;
+  return $content;
 }add_filter('the_content', 'wpss_QuizzesFilter',empty($wpss_priority)? 10 : $wpss_priority);
 
 // Filter Content for score string: [wp-simple-survey-score]
 function wpss_results_score_filter($content) {
-	return str_replace('[wp-simple-survey-score]',wpss_results_getScore(),$content);
+  return str_replace('[wp-simple-survey-score]',wpss_results_getScore(),$content);
 }add_filter('the_content', 'wpss_results_score_filter');
 
 // Filter Content for answer string: [wp-simple-survey-answers]
 function wpss_results_answer_filter($content) {
-	return str_replace('[wp-simple-survey-answers]',wpss_results_getAnswers(),$content);
+  return str_replace('[wp-simple-survey-answers]',wpss_results_getAnswers(),$content);
 }add_filter('the_content', 'wpss_results_answer_filter');
 
 // Replace '[wp-simple-survey-score]' with user's score
@@ -475,7 +475,7 @@ function wpss_results_getScore(){
 // Replace '[wp-simple-survey-answers]' with user's answers
 function wpss_results_getAnswers(){
   global $wpdb;    
-	$answers = $wpdb->get_results('SELECT question_txt, choice_txt, weight FROM '.WPSS_RESULTS_DB.' WHERE submitter_id="'.$_COOKIE['wpss-submitter'].'" AND type="answer" ORDER BY question_id ASC;',ARRAY_A);
+  $answers = $wpdb->get_results('SELECT question_txt, choice_txt, weight FROM '.WPSS_RESULTS_DB.' WHERE submitter_id="'.$_COOKIE['wpss-submitter'].'" AND type="answer" ORDER BY question_id ASC;',ARRAY_A);
 
   $submission_summary .= '<!-- WordPress Simple Survey | Copyright Steele Agency, Inc -->';    
   $submission_summary .= '<div id="wpss_user_results">';  
@@ -489,7 +489,7 @@ function wpss_results_getAnswers(){
   }
   $submission_summary .= '</div>';
     
-	return $submission_summary;
+  return $submission_summary;
 }
 
 

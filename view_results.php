@@ -1,23 +1,23 @@
 <?php
- 	// No Direct Access
- 	defined('WPSS_URL') or die('Restricted access');
-	if (!current_user_can('publish_posts')) wp_die( __('You do not have sufficient permissions to access this page.') );
+   // No Direct Access
+   defined('WPSS_URL') or die('Restricted access');
+  if (!current_user_can('publish_posts')) wp_die( __('You do not have sufficient permissions to access this page.') );
   global $wpdb;
   
-	//$wpdb->show_errors(); 
-	  
+  //$wpdb->show_errors(); 
+    
   // delete unwanted results
   wpss_delete_Results();
   
-	// grab current quiz by unique id
-	$cur_quizID = wpss_get_currentQuizID();
-	
-	// grab current Quiz from database
-	$cur_quiz = wpss_getQuizOptions($cur_quizID);
-	$questions  = wpss_get_Questions($cur_quizID);
-	$answers	= wpss_get_Answers($cur_quizID);	
+  // grab current quiz by unique id
+  $cur_quizID = wpss_get_currentQuizID();
+  
+  // grab current Quiz from database
+  $cur_quiz = wpss_getQuizOptions($cur_quizID);
+  $questions  = wpss_get_Questions($cur_quizID);
+  $answers  = wpss_get_Answers($cur_quizID);  
 
-	/* grab array containing current quiz submissions */
+  /* grab array containing current quiz submissions */
   $submissions = wpss_get_Submissions($cur_quizID);
   $num_submissions = count($submissions);
   $num_questions = count($questions);
@@ -25,16 +25,16 @@
 ?>
 <div class="wpss_results wrap">
 
-	<div id="icon-edit-pages" class="icon32"></div><h2>Wordpress Simple Survey Results</h2>
-	<br clear="all" />
-	<hr />
+  <div id="icon-edit-pages" class="icon32"></div><h2>Wordpress Simple Survey Results</h2>
+  <br clear="all" />
+  <hr />
 
   <div id="quiz_switcher">
     <p class="select">Select Quiz to View and Export Results</p>
-	  <ul id="quiz_tabs">
-  	  <?php print_quizIDList($cur_quizID,'wpss-results');?>
-	  </ul>
-	  <br clear="all" />
+    <ul id="quiz_tabs">
+      <?php print_quizIDList($cur_quizID,'wpss-results');?>
+    </ul>
+    <br clear="all" />
   </div>
   
   <!-- Quiz Sidebar -->
@@ -50,15 +50,15 @@
       <div><input class="wpss_export wpss_upgraderequired" type="submit" name="wpss_export_full_results_<?php echo $cur_quizID;?>" value="" /><h2 class="exports">Export Complete Results</h2></div>
       <br clear="all" />
       <div><input class="wpss_export wpss_upgraderequired" type="submit" name="wpss_export_userdata_<?php echo $cur_quizID;?>" value="" /><h2 class="exports">Export User Data</h2></div> 
-	  </form>
-	  <br clear="all" />
+    </form>
+    <br clear="all" />
     <form action="" method="POST">  
       <div><input class="wpss_clear_results wpss_upgraderequired" type="submit" name="wpss_result_clear_<?php echo $cur_quizID;?>" value="" /><h2 class="exports">Clear Results</h2></div>
-	  </form> 	  
+    </form>     
   </div><!-- End Right Sidebar -->  
 
 
-	<!-- Quiz Results -->
+  <!-- Quiz Results -->
   <div id="quiz_summary_main">
 
     <div id="quiz_summary_holder">    
@@ -71,8 +71,8 @@
         <!-- Questions and Answers -->
         <h2 class="summary">User's Answers</h2>
         <form style="float:right" action="" method="POST">
-		      <input class="wpss_remove" type="submit" style="float:right" name="wpss_del_result_<?php echo $submission[0]['submitter_id'];?>" value="Delete this Result" onClick="return confirm('Are you sure you want to delete this submission?')" />
-		    </form> 
+          <input class="wpss_remove" type="submit" style="float:right" name="wpss_del_result_<?php echo $submission[0]['submitter_id'];?>" value="Delete this Result" onClick="return confirm('Are you sure you want to delete this submission?')" />
+        </form> 
         <?php foreach($submission as $answer_field){ ?>
           <ul>
           <?php if($answer_field['type']=='answer'){ ?>

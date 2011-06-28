@@ -97,17 +97,17 @@ if($submit_quiz){
   if($quiz['send_user_email'] && $quiz['user_email_content']!=''){
 
     $auto_response = $quiz['user_email_content'];
-		$subject = "Thanks for taking the ".$quiz['quiz_title'];
-		
-		
-		if(!empty($quiz_summary)){
-		  foreach($quiz_summary as $qa){
-        $recorded_qa .= '<p>'.$qa['question'].'<br />'.$qa['answer'].'<br />Points: '.$qa['weight'].'</p>';    
-      }		
-		}
+    $subject = "Thanks for taking the ".$quiz['quiz_title'];
     
-		// replace tag strings with user's data
-		$auto_response = str_replace(array('[routed]','[score]','[quiztitle]','[answers]'),array($redirect_to['url'],$score,$quiz['quiz_title'],$recorded_qa),$auto_response);
+    
+    if(!empty($quiz_summary)){
+      foreach($quiz_summary as $qa){
+        $recorded_qa .= '<p>'.$qa['question'].'<br />'.$qa['answer'].'<br />Points: '.$qa['weight'].'</p>';    
+      }    
+    }
+    
+    // replace tag strings with user's data
+    $auto_response = str_replace(array('[routed]','[score]','[quiztitle]','[answers]'),array($redirect_to['url'],$score,$quiz['quiz_title'],$recorded_qa),$auto_response);
     
     $wpss_from_name  = $quiz['user_email_from_name'];
     $wpss_from_email  = $quiz['user_email_from_address']; 
@@ -121,17 +121,17 @@ if($submit_quiz){
       }
     }
   }
-	 
-	 
-	// NOTE: SYSTEM DEPENDENT HEADACHE
-	//ob_start();
+   
+   
+  // NOTE: SYSTEM DEPENDENT HEADACHE
+  //ob_start();
   setcookie("wpss-submitter",$submitter_id);
-	wp_redirect(esc_url($redirect_to['url']));
-	//ob_flush();
-	
-	
-	
-	exit;	die(); // ensure stop execution
+  wp_redirect(esc_url($redirect_to['url']));
+  //ob_flush();
+  
+  
+  
+  exit;  die(); // ensure stop execution
 }
 die();
 ?>

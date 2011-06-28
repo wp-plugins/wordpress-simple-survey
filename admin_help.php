@@ -6,23 +6,23 @@ if (!current_user_can('publish_posts')) die( __('You do not have sufficient perm
 
 
 <div id="wpss_help" class="wpss_results wrap">
-	<div id="icon-plugins" class="icon32"></div>
+  <div id="icon-plugins" class="icon32"></div>
 
-	<h2>Wordpress Simple Survey - Help</h2>
-	<br clear="all" />	
-	<hr />
-	
+  <h2>Wordpress Simple Survey - Help</h2>
+  <br clear="all" />  
+  <hr />
+  
   <div id="quiz_switcher">
     <p class="select">WordPress Simple Survey</p>
-	  <ul id="quiz_tabs">
-  	  <li><a target="_blank" href="http://www.steele-agency.com/2010/08/wordpress-simple-survey/">Project Home Page</a>|</li>
-   	  <li><a target="_blank" href="http://wordpress.org/extend/plugins/wordpress-simple-survey/">WordPress Plugins Directory Page</a>|</li>
-      <li><a target="_blank" href="http://www.steele-agency.com/">&copy;Steele Agency, Inc.</a></li>   	  	        
-	  </ul>
-	  <br clear="all" />
-  </div>	
+    <ul id="quiz_tabs">
+      <li><a target="_blank" href="http://www.steele-agency.com/2010/08/wordpress-simple-survey/">Project Home Page</a>|</li>
+      <li><a target="_blank" href="http://wordpress.org/extend/plugins/wordpress-simple-survey/">WordPress Plugins Directory Page</a>|</li>
+      <li><a target="_blank" href="http://www.steele-agency.com/">&copy;Steele Agency, Inc.</a></li>                 
+    </ul>
+    <br clear="all" />
+  </div>  
 
-	
+  
   <!-- Help Sidebar -->
   <div class="quiz_summary_sidebar">
     <div class="donate"> 
@@ -33,21 +33,21 @@ if (!current_user_can('publish_posts')) die( __('You do not have sufficient perm
         <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"> 
         <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1"> 
       </form> 
-    </div>	
+    </div>  
     <div style="clear:all"></div>
    
   </div><!-- End Right Sidebar -->  
   
-  	
-  	
-	<!-- Quiz Results -->
+    
+    
+  <!-- Quiz Results -->
   <div id="quiz_summary_main">
     <p><strong>WordPress Simple Survey</strong> is a plugin that allows for the creation of a survey, quiz, poll, or questionnaire and the tracking of user submissions.</p>
     </p>Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. Custom fields can be created to allow tracking of custom information. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. The survey answers are weighted so that some questions or answers can count more than others. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. This URL can be a previously setup page within WordPress or to a third party website containing pertinent information related to the user's score. Users can also be routed to WordPress pages that have their score and answers.</p>
     <p>The Extended version can be purchased <a href="http://www.steele-agency.com/2011/04/wordpress-simple-survey-extended">here</a>.</p>
   
-		<h2>Features</h2>
-		<br clear="all" />
+    <h2>Features</h2>
+    <br clear="all" />
     <table class="widefat" style="width:92%;margin:auto;">
       <thead><tr>
         <th>Feature</th>
@@ -159,6 +159,6 @@ if (!current_user_can('publish_posts')) die( __('You do not have sufficient perm
     <br clear="all" />        
   
   
-  </div>  	
+  </div>    
 
 </div><!-- End wrap -->
