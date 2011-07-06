@@ -33,18 +33,18 @@ function wpss_getQuiz($quiz_id){
           <fieldset class="ui-corner-all">
   
             <p class="form_question">'.$question['question'].'</p>
-            <div class="answer">';
+              <div class="answer">';
 
-            foreach($answer_set as $j => $answer){
-              if($answer['question_id']==$question['id']){
-                if($question['type']=="radio"){
-                   $retQuiz .= '<div class="answer_text"><input type="radio" class="wpss_radio" name="wpss_ans_radio_q_'.$i.'" id="answer_'.$answer['id'].'" value="wpss_ans_'.$answer['id'].'" /><label for="answer_'.$answer['id'].'">'.$answer['answer'].'</label></div><div class="clear"></div>';                  
-                }else{
-                   $retQuiz .= '<div class="answer_text"><input type="checkbox" class="wpss_radio" name="wpss_ans_check_a_'.$j.'" id="answer_'.$answer['id'].'" value="wpss_ans_'.$answer['id'].'" /><label for="answer_'.$answer['id'].'">'.$answer['answer'].'</label></div><div class="clear"></div>';                
+              foreach($answer_set as $j => $answer){
+                if($answer['question_id']==$question['id']){
+                  if($question['type']=="radio"){
+                     $retQuiz .= '<div class="answer_text"><input type="radio" class="wpss_radio" name="wpss_ans_radio_q_'.$i.'" id="answer_'.$answer['id'].'" value="wpss_ans_'.$answer['id'].'" /><label for="answer_'.$answer['id'].'">'.$answer['answer'].'</label></div><div class="clear"></div>';                  
+                  }else{
+                     $retQuiz .= '<div class="answer_text"><input type="checkbox" class="wpss_radio" name="wpss_ans_check_a_'.$j.'" id="answer_'.$answer['id'].'" value="wpss_ans_'.$answer['id'].'" /><label for="answer_'.$answer['id'].'">'.$answer['answer'].'</label></div><div class="clear"></div>';                
+                  }
                 }
               }
-            }
-            $retQuiz .= '
+              $retQuiz .= '
             </div>
           </fieldset>
 
@@ -89,18 +89,17 @@ function wpss_getUserInfo($quiz_id){
 
   $fields = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_FIELDS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A));
   $info_form .= '<div id="user_info" class="infoForm">';
+  
+    foreach($fields as $field){
+    
+      $class = empty($field['required']) ? "wpss_required" : '';
+      $req   = empty($field['required']) ? "*" : '';
 
-  foreach($fields as $field){
-    if($field['required']){ 
-      $class="wpss_required";
-      $req = "*";
+      $info_form .= '<p>'.$req.$field['name'].' <input type="text" name="wpss_field_'.$field['id'].'" class="'.$class.'" value="" alt="'.$field['name'].'" /></p>';
+      
+      $info_form .= '<div class="clear"></div>';
     }
-    else {
-      $req = '';
-      $class='';
-    } 
-    $info_form .= '<p>'.$req.$field['name'].' <input type="text" name="wpss_field_'.$field['id'].'" class="'.$class.'" value="" alt="'.$field['name'].'" /></p>';
-  }
+    
   $info_form .= '</div>';
   
   return $info_form;  
