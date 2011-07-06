@@ -51,7 +51,7 @@ function wpss_get_firstQuizID(){
   $quizzes = $wpdb->get_results( "SELECT * FROM ".WPSS_QUIZZES_DB,ARRAY_A);
   // insert first question
   if(count($quizzes)===0){
-    createNewQuiz();               
+    wpss_createNewQuiz();               
     $quizzes = $wpdb->get_results( "SELECT * FROM ".WPSS_QUIZZES_DB,ARRAY_A);
   }
   return $quizzes[0]['id'];

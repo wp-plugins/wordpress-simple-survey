@@ -3,7 +3,7 @@
 Plugin Name: WP Simple Survey
 Plugin URI: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
 Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend.
-Version: 2.1.0
+Version: 2.1.1
 Author: Richard Royal
 Author URI: http://www.steele-agency.com/author/rroyal/
 License: GPL2
@@ -55,6 +55,22 @@ function simpsurv_admin_actions() {
 
 
 
+
+
+
+
+
+
+/**
+ *  Creating options in options table
+ *  Allows users to toggle off jquery
+ */
+#function wpss_jqueryOptions(){
+#  $jquery = get_option('wpss_queue_jquery');
+#  $jqueryui = get_option('wpss_queue_jqueryui');
+#  if(!$jquery) update_option('wpss_queue_jquery','checked');;
+#  if(!$jqueryui) update_option('wpss_queue_jqueryui','checked');;
+#}wpss_jqueryOptions();
 
 
 
