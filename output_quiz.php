@@ -92,8 +92,8 @@ function wpss_getUserInfo($quiz_id){
   
     foreach($fields as $field){
     
-      $class = empty($field['required']) ? "wpss_required" : '';
-      $req   = empty($field['required']) ? "*" : '';
+      $class = empty($field['required']) ? '' : "wpss_required";
+      $req   = empty($field['required']) ? '' : '*';
 
       $info_form .= '<p>'.$req.$field['name'].' <input type="text" name="wpss_field_'.$field['id'].'" class="'.$class.'" value="" alt="'.$field['name'].'" /></p>';
       
