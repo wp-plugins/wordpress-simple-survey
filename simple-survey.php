@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP Simple Survey
-Plugin URI: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
+Plugin URI: http://saidigital.co/2010/08/wordpress-simple-survey/
 Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend.
-Version: 2.1.1
+Version: 2.2.0
 Author: Richard Royal
-Author URI: http://www.steele-agency.com/author/rroyal/
+Author URI: http://saidigital.co/author/rroyal/
 License: GPL2
 */
 
@@ -61,68 +61,31 @@ function simpsurv_admin_actions() {
 
 
 
-/**
- *  Creating options in options table
- *  Allows users to toggle off jquery
- */
-#function wpss_jqueryOptions(){
-#  $jquery = get_option('wpss_queue_jquery');
-#  $jqueryui = get_option('wpss_queue_jqueryui');
-#  if(!$jquery) update_option('wpss_queue_jquery','checked');;
-#  if(!$jqueryui) update_option('wpss_queue_jqueryui','checked');;
-#}wpss_jqueryOptions();
-
-
-
-
 
 
 /**
  *  Include JS Library in HTML <head>
  *  Allowing user ability to toggle off jquery import
  *
- *  NOTE: See js/README.txt  for good time
+ *  NOTE: See js/README.txt for good time
  */
 function wpss_includeScripts(){
   $jquery = get_option('wpss_queue_jquery');
-  $jqueryui = get_option('wpss_queue_jqueryui');
-  if(!$jquery) update_option('wpss_queue_jquery','checked');;
-  if(!$jqueryui) update_option('wpss_queue_jqueryui','checked');;  
+  if(!$jquery) update_option('wpss_queue_jquery','checked');
   $jquery = get_option('wpss_queue_jquery');
-  $jqueryui = get_option('wpss_queue_jqueryui');
-  
-  if (!is_admin()){ 
-    if($jquery == 'checked' && $jqueryui == 'checked'){
-      wp_deregister_script('jquery-ui-core');
-      wp_deregister_script('jquery-ui-tabs');
-      wp_deregister_script('jquery-ui-sortable');
-      wp_deregister_script('jquery-ui-draggable');
-      wp_deregister_script('jquery-ui-droppable');
-      wp_deregister_script('jquery-ui-selectable');
-      wp_deregister_script('jquery-ui-resizable');
-      wp_deregister_script('jquery-ui-dialog');          
-      wp_register_script('jquery-ui',WPSS_URL.'js/jquery-ui-1.8.10.full.min.js',array('jquery'),'1.8.10');
-      wp_enqueue_script('jquery-ui');    
-      wp_enqueue_script('wpss_custom', WPSS_URL.'js/custom.js',array('jquery','jquery-ui'), '1.0' );        
+
+  if(!is_admin()){
+    if($jquery == 'checked'){
+      wp_enqueue_script('jquery-ui-core',array('jquery'));
+      wp_enqueue_script('jquery-ui-widget', WPSS_URL.'js/ui.widget.min.js',array('jquery','jquery-ui-core'),'1.8.12');
+      wp_enqueue_script('jquery-ui-progressbar', WPSS_URL.'js/ui.progressbar.min.js',array('jquery','jquery-ui-core','jquery-ui-widget'), '1.8.14');
+      wp_enqueue_script('wpss_custom', WPSS_URL.'js/custom.js',array('jquery','jquery-ui-core','jquery-ui-widget','jquery-ui-progressbar'), '2.1.2');
     }
-    elseif($jquery == 'checked' && $jqueryui == 'unchecked'){  
-      wp_enqueue_script('wpss_custom', WPSS_URL.'js/custom.js',array('jquery'), '1.0' );         
-    }
-    elseif($jquery == 'unchecked' && $jqueryui == 'checked'){  
-      wp_deregister_script('jquery-ui-core');
-      wp_deregister_script('jquery-ui-tabs');
-      wp_deregister_script('jquery-ui-sortable');
-      wp_deregister_script('jquery-ui-draggable');
-      wp_deregister_script('jquery-ui-droppable');
-      wp_deregister_script('jquery-ui-selectable');
-      wp_deregister_script('jquery-ui-resizable');
-      wp_deregister_script('jquery-ui-dialog');          
-      wp_register_script('jquery-ui',WPSS_URL.'js/jquery-ui-1.8.10.full.min.js','1.8.10');
-      wp_enqueue_script('jquery-ui');    
-      wp_enqueue_script('wpss_custom', WPSS_URL.'js/custom.js',array('jquery-ui'), '1.0' );        
-    }  
-    elseif($jquery == 'unchecked' && $jqueryui == 'unchecked'){      
-      wp_enqueue_script('wpss_custom', WPSS_URL.'js/custom.js',array('jquery-ui'), '1.0' );            
+    elseif($jquery == 'unchecked'){
+#      wp_enqueue_script('jquery-ui-core');
+#      wp_register_script('jquery-ui-widget', WPSS_URL.'js/ui.widget.min.js',array(),'1.8.12');
+      wp_register_script('jquery-ui-progressbar', WPSS_URL.'js/ui.progressbar.min.js', '1.8.14');
+      wp_enqueue_script('wpss_custom', WPSS_URL.'js/custom.js',array('jquery-ui-progressbar'), '2.1.2');
     }
   }
 }add_action('wp_print_scripts', 'wpss_includeScripts');

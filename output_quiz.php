@@ -32,7 +32,7 @@ function wpss_getQuiz($quiz_id){
         $retQuiz .= '
           <fieldset class="ui-corner-all">
   
-            <p class="form_question">'.$question['question'].'</p>
+            <p class="form_question">'.$question['question'].'</p><div class="clear"></div>
               <div class="answer">';
 
               foreach($answer_set as $j => $answer){
@@ -65,6 +65,7 @@ function wpss_getQuiz($quiz_id){
 
         $retQuiz .= '        
         <input type="hidden" name="wpss_submit_quiz" value="1" />
+        <div class="clear"></div>
         <input id="submitButton" type="submit" name="wpss_submit" value="'.$quiz['submit_button_txt'].'" />
         </fieldset>
 
@@ -95,8 +96,11 @@ function wpss_getUserInfo($quiz_id){
       $class = empty($field['required']) ? '' : "wpss_required";
       $req   = empty($field['required']) ? '' : '*';
 
-      $info_form .= '<p>'.$req.$field['name'].' <input type="text" name="wpss_field_'.$field['id'].'" class="'.$class.'" value="" alt="'.$field['name'].'" /></p>';
-      
+      $info_form .= '<div class="wpss_customfield">
+                       <label>'.$req.$field['name'].'</label><input type="text" name="wpss_field_'.$field['id'].'" class="'.$class.'" value="" alt="'.$field['name'].'" />
+                       <div class="clear"></div>
+                     </div>';
+
       $info_form .= '<div class="clear"></div>';
     }
     

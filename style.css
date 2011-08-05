@@ -1,4 +1,5 @@
-/* WPSS Super-Container */
+/* WPSS Super-Container 
+-----------------------------------------------------------*/
 #wpss_survey {
   color: #333;
 }
@@ -67,23 +68,22 @@
 
 /* Label - Answers, Answer set Style */
 #wpss_survey .form-panel label { 
-  width:415px;
-  float:right;
+/* width:415px; */
+/*  float:right;*/
   padding:0;margin: 0px;
   color:#333;
-  size:12px;
-  padding-top:2px;
+  font-size:14px;
 }
+/* radio and checkbox input */
 #wpss_survey .wpss_radio{
-  width:20px;
+/*  width:25px;*/
+  
+  padding:0;margin: 0px;
+  margin-right:10px;
 }
-
-
 #wpss_survey .answer .answer_text{
   margin-bottom:15px;
 }
-
-
 #wpss_survey .clear {
   clear: both;
   font-size: 1px;
@@ -91,19 +91,31 @@
 }
 
 
+/** 
+  *  Defualt form image assumes centered, you can override specific questions with:
+  *  #wpss_survey #panel{N} fieldset img{} or include style inline to image
+ */
+#wpss_survey .form-panel fieldset img{
+  max-width:95%;
+  padding:0;
+  margin:5px;
+}
 
 
-/* Inputs */
+
+/* Custom Field Inputs */
 #wpss_survey .form-panel input, #wpss_survey .form-panel textarea { 
-  vertical-align: middle;
+/*  vertical-align: middle;
   margin: 0px;
-  padding: 0px;
+  padding: 0px; */
 
 }
 #wpss_survey .form-panel radio{
   -webkit-appearance: radio;
   -webkit-box-sizing: border-box;
 }
+
+
 #wpss_survey .form-container button { float:right; }
 
 
@@ -114,19 +126,27 @@
   width:300px;
   margin:auto;
 }
-#wpss_survey .infoForm p{
-  font-size:14px;line-height:16px
+#wpss_survey .infoForm .wpss_customfield{
+  margin-bottom:10px;
+}
+#wpss_survey .infoForm label{
+  font-size:14px;
+  line-height:16px;
+  margin-top:1px;
   font-weight:bold;
-  margin:0 0 15px 0;padding:0;
+  margin:0;padding:0;
+  float:left;
 }
 #wpss_survey .infoForm input{
   float:right;
+  height:16px;line-height:16px;
+  margin:0;
+  background-color: white;
+  border: 1px solid #BBB;
+  color: #4E4E4E;
 }
 
-#wpss_survey p.form_subtitle{font-family:Verdana; font-size:17px; margin-top:5px;margin-bottom:15px;}
-
-
-#wpss_survey h3{ text-align:center; font-size:18px; padding:10px; }
+#wpss_survey h3{ text-align:center; font-size:18px; padding:10px;display:block; }
 
 #wpss_survey #submitButton{
   padding:5px;

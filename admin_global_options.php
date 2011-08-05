@@ -73,13 +73,13 @@ $priority = get_option('wpss_filter_priority');
     <!-- jQuery Situation -->
     <h2>The jQuery Situation</h2>
     <p>A problem people sometimes have with plugins that require jQuery, like WP Simple Survey, is having multiple jQuery and jQuery-UI JavaScript libraries being loaded. Having multiple instances of the same library is a major problem.</p>
-    <p>WordPress has a built-in system to prevent this, but theme and plugin designers fail to use it due to their lack of understanding of an API/plugin driven CMS.<br />See <a hre="http://codex.wordpress.org/Function_Reference/wp_enqueue_script">http://codex.wordpress.org/Function_Reference/wp_enqueue_script</a> for more detailed information.</p>
+    <p>WordPress has a built-in system to prevent this (In fact all Plug-able Web Application Frameworks and CMSs have this), but theme and plugin designers fail to use it due to their lack of understanding of an API/plugin driven system.<br />See <a target="_blank" href="http://codex.wordpress.org/Function_Reference/wp_enqueue_script">http://codex.wordpress.org/Function_Reference/wp_enqueue_script</a> for more detailed information.</p>
     <p>If you're testing out WP Simple Survey and notice that the sliding features and progress bar are not working, and the quiz submits when you click next, this is probably your issue. You can verify this by checking your page source (HTML) and looking for multiple jquery.js or jquery-ui.js. Note: some theme and plugin designers call the file jquery-(version).js</p>
     <p><strong>Possible "solution"</strong>: turn off the properly imported libraries in this plugin and use the hardcoded ones from your genius theme/plugin designers.</p>
     <form action="" id="wpss_togglejquery"class="wpss_global_options_form" method="post">
+      <input type="submit" style="float:right;margin-top:10px" class="button-primary" name="savejquery" value="Save" />
       <p>Properly import jQuery (toggle this): <input type="checkbox" name="wpss_turnoffjquery" value="turned_on" <?php echo $jquery=='checked'? 'checked':'';?> /></p>
-      <input type="submit" style="float:right" class="button-primary" name="savejquery" value="Save" />
-      <p>Properly import jQuery-UI (toggle this): <input type="checkbox" name="wpss_turnoffjqueryui" value="turned_on" <?php echo $jqueryui=='checked'? 'checked':'';?> /></p>    
+      <div style="clear:both"></div>
     </form>
     
     <p><strong>Other solutions</strong>:</p>
@@ -107,17 +107,8 @@ $priority = get_option('wpss_filter_priority');
       <div style="clear:both"></div>
     </form>
 
-
-
-
-
-
-
-    
   </div>
-  
-  
-  
+
 
 
 </div><!-- End wrap -->

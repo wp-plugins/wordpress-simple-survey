@@ -1,10 +1,10 @@
 === Wordpress Simple Survey ===
 Contributors: richard_steeleagency
-Donate link: http://www.steele-agency.com/2010/08/wordpress-simple-survey/
+Donate link: http://saidigital.co/2010/08/wordpress-simple-survey/
 Tags: survey, quiz, poll, exam, test, questionnaire
-Requires at least: 3.1.1
-Tested up to: 3.1.3
-Stable tag: 2.1.0
+Requires at least: 3.2.1
+Tested up to: 3.2.1
+Stable tag: 2.2.0
 
 
 A jQuery-based plugin that displays a weighted survey, and then routes user to location based on score. 
@@ -14,9 +14,9 @@ A jQuery-based plugin that displays a weighted survey, and then routes user to l
 Wordpress Simple Survey is a plugin that allows for the creation of a survey, poll, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. Each answer is given a weight (or score/points). Once a quiz is submitted, the user is taken to a predefined URL based on their score range; this page can be any URL including pages setup in WordPress that can contain information relevant to the particular scoring range, including the user's score and answer set. The plugin can also keep a record of all submissions and email results to a predefined email address. 
 
 
-* [Project Homepage](http://www.steele-agency.com/2010/08/wordpress-simple-survey/)
-* [Support](http://www.steele-agency.com/2010/08/wordpress-simple-survey/#comments)
-* [Extended Version](http://www.steele-agency.com/2011/04/wordpress-simple-survey-extended/)
+* [Project Homepage](http://saidigital.co/2010/08/wordpress-simple-survey/)
+* [Support](http://saidigital.co/2010/08/wordpress-simple-survey/#comments)
+* [Extended Version](http://saidigital.co/2011/04/wordpress-simple-survey-extended/)
 
 == Installation ==
 
@@ -55,6 +55,9 @@ Add the string: [wp-simple-survey] to an article.
 7. Diagram
 
 == Changelog ==
+
+= 2.2.0 = 
+* Added separte JS plugin file for ui.widget. Cleaned up CSS.
 
 = 2.1.0 =
 * Added admin control for add_filter priority
