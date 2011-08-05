@@ -57,7 +57,7 @@ Add the string: [wp-simple-survey] to an article.
 == Changelog ==
 
 = 2.2.0 = 
-* Added separte JS plugin file for ui.widget. Cleaned up CSS.
+* Added separate JS plugin file for ui.widget and ui.progressbar for better JS compatability. Cleaned up CSS and markup.
 
 = 2.1.0 =
 * Added admin control for add_filter priority
