@@ -15,9 +15,9 @@ if (!current_user_can('publish_posts')) die( __('You do not have sufficient perm
   <div id="quiz_switcher">
     <p class="select">WordPress Simple Survey</p>
     <ul id="quiz_tabs">
-      <li><a target="_blank" href="http://www.steele-agency.com/2010/08/wordpress-simple-survey/">Project Home Page</a>|</li>
+      <li><a target="_blank" href="http://saidigital.co/2010/08/wordpress-simple-survey/">Project Home Page</a>|</li>
       <li><a target="_blank" href="http://wordpress.org/extend/plugins/wordpress-simple-survey/">WordPress Plugins Directory Page</a>|</li>
-      <li><a target="_blank" href="http://www.steele-agency.com/">&copy;Steele Agency, Inc.</a></li>                 
+      <li><a target="_blank" href="http://saidigital.co/">&copy;SAI Digital</a></li> 
     </ul>
     <br clear="all" />
   </div>  
@@ -44,7 +44,7 @@ if (!current_user_can('publish_posts')) die( __('You do not have sufficient perm
   <div id="quiz_summary_main">
     <p><strong>WordPress Simple Survey</strong> is a plugin that allows for the creation of a survey, quiz, poll, or questionnaire and the tracking of user submissions.</p>
     </p>Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. Custom fields can be created to allow tracking of custom information. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. The survey answers are weighted so that some questions or answers can count more than others. Once a quiz is submitted, the user is taken to a predefined URL based on their score range. This URL can be a previously setup page within WordPress or to a third party website containing pertinent information related to the user's score. Users can also be routed to WordPress pages that have their score and answers.</p>
-    <p>The Extended version can be purchased <a href="http://www.steele-agency.com/2011/04/wordpress-simple-survey-extended">here</a>.</p>
+    <p>The Extended version can be purchased <a href="http://saidigital.co/2011/04/wordpress-simple-survey-extended">here</a>.</p>
   
     <h2>Features</h2>
     <br clear="all" />

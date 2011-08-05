@@ -17,7 +17,7 @@ function wpss_getQuiz($quiz_id){
 
   // Don't forget to donate and chip in
   $retQuiz .= '
-  <!-- WordPress Simple Survey | Copyright Steele Agency, Inc. (http://steele-agency.com) -->
+  <!-- WordPress Simple Survey | Copyright SAI Digital (http://saidigital.co) -->
   <div id="wpss_survey">
     <div id="wpss-quiz-'.$quiz['id'].'" class="form-container ui-helper-clearfix ui-corner-all">
     <h2>'.$quiz['quiz_title'].'</h2>
