@@ -4,7 +4,7 @@ Donate link: http://saidigital.co/2010/08/wordpress-simple-survey/
 Tags: survey, quiz, poll, exam, test, questionnaire
 Requires at least: 3.2.1
 Tested up to: 3.2.1
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 
 
 A jQuery-based plugin that displays a weighted survey, and then routes user to location based on score. 
@@ -42,7 +42,7 @@ Two obvious ways of using this plugin are to create a Survey-Type quiz that rout
 
 = How do I make the quiz show up in my content? =
 
-Add the string: [wp-simple-survey] to an article.
+Add the string: [wp-simple-survey-1] to an article.
 
 == Screenshots ==
 
@@ -55,6 +55,9 @@ Add the string: [wp-simple-survey] to an article.
 7. Diagram
 
 == Changelog ==
+
+= 2.2.1 = 
+* Changed folder structure. Fixed quiz results display to remove HTML tags.
 
 = 2.2.0 = 
 * Added separate JS plugin file for ui.widget and ui.progressbar for better JS compatability. Cleaned up CSS and markup.
@@ -105,6 +108,9 @@ Add the string: [wp-simple-survey] to an article.
 * Originating version.
 
 == Upgrade Notice ==
+
+= 2.2.1  =
+Because the folder structure has changed, you may need to delete the 'wordpress-simple-survey' folder and replace with this update. You will not lose any data.
 
 = 2.0.0 =
 When upgrading to 2.0.0 from 1.5, quizzes will have to be re-inserted

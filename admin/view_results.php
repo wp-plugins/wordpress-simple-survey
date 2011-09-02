@@ -76,7 +76,7 @@
         <?php foreach($submission as $answer_field){ ?>
           <ul>
           <?php if($answer_field['type']=='answer'){ ?>
-            <li><?php echo $answer_field['question_txt'];?>
+            <li><?php echo _wpss_filter($answer_field['question_txt']);?>
               <ul>
                 <li><?php echo $answer_field['choice_txt'].' '.$answer_field['weight'];?></li>
               </ul>

@@ -3,7 +3,7 @@
 Plugin Name: WP Simple Survey
 Plugin URI: http://saidigital.co/2010/08/wordpress-simple-survey/
 Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend.
-Version: 2.2.0
+Version: 2.2.1
 Author: Richard Royal
 Author URI: http://saidigital.co/author/rroyal/
 License: GPL2
@@ -27,6 +27,7 @@ require_once("submit_functions.php");
 require_once("db_setup.php");
 require_once("quiz_js.php");
 require_once("output_quiz.php");
+require_once("admin/admin_functions.php");
 
 
 
@@ -40,10 +41,10 @@ register_activation_hook(__FILE__,'wpss_plugin_install');
  *  Connect Each Admin page with its function
  *  which imports php script page
  */
-function simpsurv_admin(){require_once("admin_quizzes.php");}
-function simpsurv_tracking(){require_once("view_results.php");}
-function simpsurv_help(){require_once("admin_help.php");}
-function simpsurv_global(){require_once("admin_global_options.php");}
+function simpsurv_admin(){require_once("admin/admin_quizzes.php");}
+function simpsurv_tracking(){require_once("admin/view_results.php");}
+function simpsurv_help(){require_once("admin/admin_help.php");}
+function simpsurv_global(){require_once("admin/admin_global_options.php");}
 function simpsurv_admin_actions() {
   if (current_user_can('manage_options')) {
     add_menu_page("WP Simple Survey - Setup Quizzes", "WPSS - Setup", "publish_posts", "wpss-setup","simpsurv_admin");
