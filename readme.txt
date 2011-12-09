@@ -20,7 +20,7 @@ Wordpress Simple Survey is a plugin that allows for the creation of a survey, po
 
 == Installation ==
 
-1. Upload plugin to the 'wp-content/plugins/' directory
+1. Upload plugin to the 'wp-content/plugins/' directory. Ensure that there is only one WPSS folder and it is named "wordpress-simple-survey".
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Once activated the new menu item: WPSS Options, is created
 4. Configure your options, make sure to select the number of questions you want and click 'Update'
@@ -55,6 +55,9 @@ Add the string: [wp-simple-survey-1] to an article.
 7. Diagram
 
 == Changelog ==
+
+= 2.2.2 =
+* Added empty buffers to inputs of some extra functions.
 
 = 2.2.1 = 
 * Changed folder structure. Fixed quiz results display to remove HTML tags.

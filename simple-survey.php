@@ -3,7 +3,7 @@
 Plugin Name: WP Simple Survey
 Plugin URI: http://saidigital.co/2010/08/wordpress-simple-survey/
 Description: A jQuery-based plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend.
-Version: 2.2.1
+Version: 2.2.2
 Author: Richard Royal
 Author URI: http://saidigital.co/author/rroyal/
 License: GPL2
