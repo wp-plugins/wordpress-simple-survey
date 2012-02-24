@@ -12,7 +12,6 @@ A WordPress Survey and Quiz plugin that displays basic weighted survey, then rou
 
 Wordpress Simple Survey is a plugin that allows for the creation of a survey, poll, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. Each answer is given a weight (or score/points). Once a quiz is submitted, the user is taken to a predefined URL based on their score range; this page can be any URL including pages setup in WordPress that can contain information relevant to the particular scoring range, including the user's score and answer set. The plugin can also keep a record of all submissions and email results to a predefined email address. 
 
-
 * [Project Homepage](http://labs.saidigital.co/products/wordpress-simple-survey/)
 * [Support](http://labs.saidigital.co/products/wordpress-simple-survey/support-2/)
 * [Extended Version](http://labs.saidigital.co/products/wordpress-simple-survey/wordpress-simple-survey-extended-version/)
