@@ -91,7 +91,7 @@
         <?php foreach($submission as $answer_field){ ?>
           <ul>
           <?php if($answer_field['type']=='field'){ ?>
-            <li><?php echo $answer_field['field_name'].' '.$answer_field['field_value'];?></li><?php
+            <li><?php echo $answer_field['field_name'].' '.htmlspecialchars($answer_field['field_value']);?></li><?php
           } ?>
           </ul><?php
         } ?> 

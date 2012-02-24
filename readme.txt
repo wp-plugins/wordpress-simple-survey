@@ -6,17 +6,16 @@ Requires at least: 3.2.1
 Tested up to: 3.2.1
 Stable tag: 2.2.1
 
-
-A jQuery-based plugin that displays a weighted survey, and then routes user to location based on score. 
+A WordPress Survey and Quiz plugin that displays basic weighted survey, and then routes user to location based on score, and allows tracking and automated emails. 
 
 == Description ==
 
 Wordpress Simple Survey is a plugin that allows for the creation of a survey, poll, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. Each answer is given a weight (or score/points). Once a quiz is submitted, the user is taken to a predefined URL based on their score range; this page can be any URL including pages setup in WordPress that can contain information relevant to the particular scoring range, including the user's score and answer set. The plugin can also keep a record of all submissions and email results to a predefined email address. 
 
 
-* [Project Homepage](http://saidigital.co/2010/08/wordpress-simple-survey/)
-* [Support](http://saidigital.co/2010/08/wordpress-simple-survey/#comments)
-* [Extended Version](http://saidigital.co/2011/04/wordpress-simple-survey-extended/)
+* [Project Homepage](http://labs.saidigital.co/products/wordpress-simple-survey/)
+* [Support](http://labs.saidigital.co/products/wordpress-simple-survey/support-2/)
+* [Extended Version](http://labs.saidigital.co/products/wordpress-simple-survey/wordpress-simple-survey-extended-version/)
 
 == Installation ==
 
@@ -55,6 +54,9 @@ Add the string: [wp-simple-survey-1] to an article.
 7. Diagram
 
 == Changelog ==
+
+= 2.2.3 =
+* Added htmlspecialchars to results preview. Linked to new support forums and plugin site.
 
 = 2.2.2 =
 * Added empty buffers to inputs of some extra functions.
