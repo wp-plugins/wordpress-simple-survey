@@ -56,7 +56,7 @@ $fields     = wpss_get_Fields($cur_quizID);
 
     <div class="wpss_table_wrap">
     <p class="editing">Currently editing Quiz-<?php echo $cur_quizID;?><input class="button-primary" style="float:right;" type="submit" name="Submit" value="Save Current Quiz" /><input class="button-secondary wpss_upgraderequired" style="float:right;" type="submit" name="wpss_del_quiz_<?php echo $cur_quizID;?>" value="Delete Current Quiz" /></p>
-    <table id="wpss_admin_table" border="1">
+    <table id="wpss_admin_table">
       <tr>
         <td id="wpss_setup" class="admin_head">
           <h2>Quiz Options</h2>
@@ -143,7 +143,7 @@ $fields     = wpss_get_Fields($cur_quizID);
     <div id="edit_questions"><div id="icon-edit-pages" class="icon32"></div><h2><?php _e("Questions: " ); ?></h2>
     <p>Enter questions, answers and weights in the fields. Add questions and answers as need. Also, only paste from basic text editor.</p>
 
-    <table id="wpss_question_table" class="widefat" border="1">
+    <table id="wpss_question_table" class="widefat">
     
       <thead><tr>
         <th>Question</th>
@@ -167,13 +167,13 @@ $fields     = wpss_get_Fields($cur_quizID);
 
         <td class="ans_col">
 
-        <table class="ans_weights" border="0">
+        <table class="ans_weights">
         <tr>
           <th style="text-align:left">&nbsp;Answers <span style="float:right">Weights</span></th>
         </tr>
         <tr><td class="ans">
         <!-- Output Answers Table-->
-          <table class="wpss_admin_answers_table" border="1">
+          <table class="wpss_admin_answers_table">
           <?php 
             $ans_group = wpss_get_answer($answers,$question['id']);          
             foreach($ans_group as $ans_array => $answer){ ?>

@@ -228,6 +228,9 @@ ul#quiz_tabs li.current a{
 }
 table#wpss_admin_table{
   width:100%;
+  border-collapse:collapse;
+  border: 1px solid #DFDFDF;
+  border:0;
 }
 table#wpss_admin_table h2{
   font-size:17px;
