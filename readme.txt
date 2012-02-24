@@ -1,6 +1,6 @@
 === Wordpress Simple Survey ===
 Contributors: richard_steeleagency
-Donate link: http://saidigital.co/2010/08/wordpress-simple-survey/
+Donate link: http://labs.saidigital.co/products/wordpress-simple-survey/
 Tags: survey, quiz, poll, exam, test, questionnaire
 Requires at least: 3.2.1
 Tested up to: 3.2.1
