@@ -6,7 +6,7 @@ Requires at least: 3.2.1
 Tested up to: 3.2.1
 Stable tag: 2.2.1
 
-A WordPress Survey and Quiz plugin that displays basic weighted survey, and then routes user to location based on score, and allows tracking and automated emails. 
+A WordPress Survey and Quiz plugin that displays basic weighted survey, then routes user to location based on score, and allows tracking and emails.
 
 == Description ==
 
