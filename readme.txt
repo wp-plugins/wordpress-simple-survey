@@ -120,7 +120,7 @@ Add the string: [wp-simple-survey-1] to an article.
 == Upgrade Notice ==
 
 = 2.2.5  =
-Table collations and charsets are now UTF. However, existing databases cannot easily be changed through the plugin. If you need UTF characters, you will have to delete your WPSS database tables and then deactivate and then activate the plugin the generate new tables with UTF collation.
+Table collations and charsets are now UTF. However, existing databases cannot easily be changed through the plugin. If you need UTF characters, you will have to delete your WPSS database tables and then deactivate and then activate the plugin to generate new tables with UTF collation.
 
 = 2.2.1  =
 Because the folder structure has changed, you may need to delete the 'wordpress-simple-survey' folder and replace with this update. You will not lose any data.
