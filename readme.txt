@@ -2,8 +2,8 @@
 Contributors: richard_steeleagency
 Donate link: http://labs.saidigital.co/products/wordpress-simple-survey/
 Tags: survey, quiz, poll, exam, test, questionnaire
-Requires at least: 3.2.1
-Tested up to: 3.2.1
+Requires at least: 3.3.1
+Tested up to: 3.3.1
 Stable tag: 2.2.1
 
 A WordPress Survey and Quiz plugin that displays basic weighted survey, then routes user to location based on score, and allows tracking and emails.
@@ -53,6 +53,9 @@ Add the string: [wp-simple-survey-1] to an article.
 7. Diagram
 
 == Changelog ==
+
+= 2.2.4 =
+* Added new WordPress TinyMCE API to email textarea and question textarea (Extended Version now has media manager with textareas).
 
 = 2.2.3 =
 * Added htmlspecialchars to results preview. Linked to new support forums and plugin site.

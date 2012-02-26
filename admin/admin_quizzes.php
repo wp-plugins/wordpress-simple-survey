@@ -123,7 +123,13 @@ $fields     = wpss_get_Fields($cur_quizID);
           
           <p>Auto-Respond Email Content:
           <img title="Use:<br />[routed], [score], [quiztitle], and [answers], for data." class="wpss_info" src="<?php echo WPSS_URL.'images/wpss_info.png';?>" /></p>
-          <textarea id="wpss_tinyedit" rows="8" name="wpss_emailResponce"><?php echo $cur_quiz['user_email_content'];?></textarea>
+
+          <?php if(function_exists('wp_editor')): ?>
+            <?php wp_editor($cur_quiz['user_email_content'], "wpss_emailResponce", array('textarea_rows'=>8, 'teeny'=>true)); ?>
+          <?php else: ?>
+            <textarea id="wpss_tinyedit" rows="8" name="wpss_emailResponce"><?php echo $cur_quiz['user_email_content'];?></textarea>
+          <?php endif;?>
+
     
           <p>Mail From Name:
           <img title="Attempt to use special mail from name.<br />Example:<br />Investment Quizzer" class="wpss_info" src="<?php echo WPSS_URL.'images/wpss_info.png';?>" /></p>
