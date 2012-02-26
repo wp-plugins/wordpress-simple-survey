@@ -25,8 +25,8 @@ function wpss_plugin_install() {
               "quiz_questions text NOT NULL, ".
               "score_routes text NOT NULL, ".
               "integrate_wplogin tinyint NOT NULL, ".
-              "UNIQUE KEY id (id) ".
-            ")";
+              "UNIQUE KEY id (id) ) ".
+              "DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
     dbDelta($sql);
   }  
   
@@ -52,8 +52,8 @@ function wpss_plugin_install() {
               "ip_address text, ".
               "submitted_at TIMESTAMP DEFAULT now(), ".
               "total_score float, ".
-              "UNIQUE KEY id (id) ".
-            ")";
+              "UNIQUE KEY id (id) ) ".
+              "DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
     dbDelta($sql);
   }
   
@@ -64,8 +64,8 @@ function wpss_plugin_install() {
                "question text, ".
                "type text, ".               
                "quiz_id int, ".
-               "UNIQUE KEY id (id) ".
-            ")";
+               "UNIQUE KEY id (id) ) ".
+               "DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
     dbDelta($sql);
   }  
   
@@ -77,8 +77,8 @@ function wpss_plugin_install() {
                "weight float, ".
                "quiz_id int, ".
                "question_id int, ".
-               "UNIQUE KEY id (id) ".
-            ")";
+               "UNIQUE KEY id (id) ) ".
+               "DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
     dbDelta($sql);
   }  
   
@@ -88,8 +88,8 @@ function wpss_plugin_install() {
                "id int NOT NULL AUTO_INCREMENT, ".
                "question text, ".
                "quiz_id int, ".
-               "UNIQUE KEY id (id) ".
-            ")";
+               "UNIQUE KEY id (id) ) ".
+               "DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
     dbDelta($sql);
   }  
 
@@ -101,8 +101,8 @@ function wpss_plugin_install() {
               "to_score float, ".
               "url text, ".
               "quiz_id int, ".
-              "UNIQUE KEY id (id) ".
-            ")";
+              "UNIQUE KEY id (id) ) ".
+              "DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
     dbDelta($sql);
   }  
 
@@ -113,8 +113,8 @@ function wpss_plugin_install() {
                "name text, ".
                "required tinyint, ".
                "quiz_id int, ".
-               "UNIQUE KEY id (id) ".
-            ")";
+               "UNIQUE KEY id (id) ) ".
+               "DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;";
     dbDelta($sql);
   }  
 
