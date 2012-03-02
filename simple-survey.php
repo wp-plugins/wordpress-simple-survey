@@ -3,7 +3,7 @@
 Plugin Name: WP Simple Survey
 Plugin URI: http://labs.saidigital.co/products/wordpress-simple-survey/
 Description: A WordPress Survey and Quiz plugin that displays basic weighted survey, and then routes user to location based on score. Survey displays one question at a time, and uses jQuery to reload the subsequent question without reloading the page. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend.
-Version: 2.2.5
+Version: 2.2.6
 Author: Richard Royal
 Author URI: http://saidigital.co/author/rroyal/
 License: GPL2
@@ -22,12 +22,12 @@ define('WPSS_ROUTES_DB',$wpdb->prefix.'wpss_Routes');
 define('WPSS_FIELDS_DB',$wpdb->prefix.'wpss_Fields');
 define('WPSS_EXTENDED_DB_VERSION','1.0');
 require_once(ABSPATH.'wp-admin/includes/upgrade.php');
-require_once("functions.php");
-require_once("submit_functions.php");
-require_once("db_setup.php");
-require_once("quiz_js.php");
-require_once("output_quiz.php");
-require_once("admin/admin_functions.php");
+require_once(WPSS_PATH."functions.php");
+require_once(WPSS_PATH."submit_functions.php");
+require_once(WPSS_PATH."db_setup.php");
+require_once(WPSS_PATH."quiz_js.php");
+require_once(WPSS_PATH."output_quiz.php");
+require_once(WPSS_PATH."admin/admin_functions.php");
 
 
 

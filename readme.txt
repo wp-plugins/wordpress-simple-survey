@@ -4,7 +4,7 @@ Donate link: http://labs.saidigital.co/products/wordpress-simple-survey/
 Tags: survey, quiz, poll, exam, test, questionnaire
 Requires at least: 3.3.1
 Tested up to: 3.3.1
-Stable tag: 2.2.1
+Stable tag: 2.2.6
 
 A WordPress Survey and Quiz plugin that displays basic weighted survey, then routes user to location based on score, and allows tracking and emails.
 
@@ -53,6 +53,9 @@ Add the string: [wp-simple-survey-1] to an article.
 7. Diagram
 
 == Changelog ==
+
+= 2.2.6 =
+* Added full paths to include statements to avoid issues with PHP path issues on specific hosts.
 
 = 2.2.5 =
 * Forced UTF support through dbDelta function.

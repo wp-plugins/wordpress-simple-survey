@@ -40,7 +40,7 @@ $priority = get_option('wpss_filter_priority');
   <div id="quiz_switcher">
     <p class="select">WordPress Simple Survey</p>
     <ul id="quiz_tabs">
-      <li><a target="_blank" href="http://saidigital.co/2010/08/wordpress-simple-survey/">Project Home Page</a>|</li>
+      <li><a target="_blank" href="http://labs.saidigital.co/products/wordpress-simple-survey/">Project Home Page</a>|</li>
       <li><a target="_blank" href="http://wordpress.org/extend/plugins/wordpress-simple-survey/">WordPress Plugins Directory Page</a>|</li>
       <li><a target="_blank" href="http://saidigital.co/">&copy;Steele Agency, Inc.</a></li>                 
     </ul>
