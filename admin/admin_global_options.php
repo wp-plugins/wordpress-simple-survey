@@ -5,18 +5,18 @@ if (!current_user_can('publish_posts')) die( __('You do not have sufficient perm
 global $wpdb;
 
 // save jQuery Changes
-if($_POST['savejquery']=='Save'){
-  if($_POST['wpss_turnoffjquery'] == 'turned_on') update_option('wpss_queue_jquery','checked');
+if(!empty($_POST['savejquery']) && $_POST['savejquery']=='Save'){
+  if(!empty($_POST['wpss_turnoffjquery']) && $_POST['wpss_turnoffjquery'] == 'turned_on') update_option('wpss_queue_jquery','checked');
   else update_option('wpss_queue_jquery','unchecked');
 
-  if($_POST['wpss_turnoffjqueryui'] == 'turned_on') update_option('wpss_queue_jqueryui','checked');
+  if(!empty($_POST['wpss_turnoffjqueryui']) && $_POST['wpss_turnoffjqueryui'] == 'turned_on') update_option('wpss_queue_jqueryui','checked');
   else update_option('wpss_queue_jqueryui','unchecked');
 }
 
 
 
 // Save Priority Changes
-if($_POST['savepriority']=='Save'){
+if(!empty($_POST['savepriority']) && $_POST['savepriority']=='Save'){
   $priority = empty( $_POST['wpss_filterpriority'])? 10 : $_POST['wpss_filterpriority'];  
   update_option('wpss_filter_priority',$priority);
 }

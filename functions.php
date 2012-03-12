@@ -69,6 +69,7 @@ function print_quizIDList($id,$page){
   global $wpdb;
   $quizzes = $wpdb->get_results("SELECT * FROM ".WPSS_QUIZZES_DB, ARRAY_A);
 
+  $list = '';
   foreach($quizzes as $q){
     if($q['id']==$id){
       $list .= '<li class="current"><a href="?page='.$page.'&quiz='.$q['id'].'">Quiz-'.$q['id'].'</a>|</li>';
@@ -92,8 +93,8 @@ function print_quizIDList($id,$page){
  */
 function wpss_get_currentQuizID(){
   global $wpdb;
-  if(is_numeric($_GET['quiz'])) return $_GET['quiz'];
-  if($_GET['quiz']=="new"){
+  if(!empty($_GET['quiz']) && is_numeric($_GET['quiz'])) return $_GET['quiz'];
+  if(!empty($_GET['quiz']) && $_GET['quiz']=="new"){
     $newest_quiz = $wpdb->get_row("SELECT `id` FROM `".WPSS_QUIZZES_DB."` ORDER BY `id` DESC LIMIT 1",ARRAY_A );
     return $newest_quiz['id'];
   }
@@ -248,7 +249,7 @@ function wpss_save_quiz($quiz_id){
       $field_id = substr($name,11);
       $wpdb->update(WPSS_FIELDS_DB,array('name'=>$value),array('id'=>$field_id));
       
-      $required = (int) $_POST['wpss_field_required_'.$field_id];
+      $required = empty($_POST['wpss_field_required_'.$field_id])? 0 : ((int) $_POST['wpss_field_required_'.$field_id]);
       $wpdb->update(WPSS_FIELDS_DB,array('required'=>$required),array('id'=>$field_id));
     }      
     
@@ -413,6 +414,8 @@ function wpss_array_trim($key,$value,&$array){
  *  @return array
  */
 function wpss_averageScore(&$submissions,$num_submissions,$num_questions,&$answers){
+  $total_possible_points = 0;
+  $total_points_earned = 0;
   foreach($answers as $answer){
     $total_possible_points += $answer['weight'];
   }
@@ -468,6 +471,7 @@ function wpss_results_answer_filter($content) {
 // Replace '[wp-simple-survey-score]' with user's score
 function wpss_results_getScore(){
   global $wpdb;
+  if( empty($_COOKIE['wpss-submitter']) ) return 0;
   $this_score = $wpdb->get_results('SELECT total_score FROM '.WPSS_RESULTS_DB.' WHERE submitter_id="'.$_COOKIE['wpss-submitter'].'" LIMIT 1;',ARRAY_A);
   return $this_score[0]['total_score'];
 }
@@ -475,9 +479,10 @@ function wpss_results_getScore(){
 // Replace '[wp-simple-survey-answers]' with user's answers
 function wpss_results_getAnswers(){
   global $wpdb;    
+  if( empty($_COOKIE['wpss-submitter']) ) return '';
   $answers = $wpdb->get_results('SELECT question_txt, choice_txt, weight FROM '.WPSS_RESULTS_DB.' WHERE submitter_id="'.$_COOKIE['wpss-submitter'].'" AND type="answer" ORDER BY question_id ASC;',ARRAY_A);
 
-  $submission_summary .= '<!-- WordPress Simple Survey | Copyright Steele Agency, Inc -->';    
+  $submission_summary = '<!-- WordPress Simple Survey | Copyright Steele Agency, Inc -->';    
   $submission_summary .= '<div id="wpss_user_results">';  
   foreach($answers as $answer){
     $submission_summary .= 

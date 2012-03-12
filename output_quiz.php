@@ -16,7 +16,7 @@ function wpss_getQuiz($quiz_id){
 
 
   // Don't forget to donate and chip in
-  $retQuiz .= '
+  $retQuiz = '
   <!-- WordPress Simple Survey | Copyright SAI Digital (http://saidigital.co) -->
   <div id="wpss_survey">
     <div id="wpss-quiz-'.$quiz['id'].'" class="form-container ui-helper-clearfix ui-corner-all">
@@ -89,7 +89,7 @@ function wpss_getUserInfo($quiz_id){
   global $current_user; get_currentuserinfo();
 
   $fields = stripslashes_deep($wpdb->get_results("SELECT * FROM ".WPSS_FIELDS_DB." WHERE quiz_id='$quiz_id' ORDER BY id ASC",ARRAY_A));
-  $info_form .= '<div id="user_info" class="infoForm">';
+  $info_form = '<div id="user_info" class="infoForm">';
   
     foreach($fields as $field){
     

@@ -9,15 +9,15 @@ global $wpdb;
 $cur_quizID = wpss_get_currentQuizID();
 
 /* create new question, answer, and route when requested */
-if($_POST['addquestion'] == 'add new question') wpss_add_newQuestion($cur_quizID);
+if(!empty($_POST['addquestion']) && $_POST['addquestion'] == 'add new question') wpss_add_newQuestion($cur_quizID);
 wpss_add_newAnswer($cur_quizID);
-if($_POST['addrange'] == 'add new range') wpss_add_newRange($cur_quizID);
+if(!empty($_POST['addrange']) && $_POST['addrange'] == 'add new range') wpss_add_newRange($cur_quizID);
 
 /* delete questions, answers and routes when requested */
 wpss_delete_unwanted();
 
 // Update Options if submitted and changed
-if($_POST['wpss_submit'] == 'submit' || $_POST['wpss_submit'] == 'Save Current Quiz') {
+if(!empty($_POST['wpss_submit']) && ($_POST['wpss_submit'] == 'submit' || $_POST['wpss_submit'] == 'Save Current Quiz')) {
   
   // update questions, answers, routes, and fields
   wpss_save_quiz($cur_quizID);       

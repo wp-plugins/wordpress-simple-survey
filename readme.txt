@@ -54,6 +54,9 @@ Add the string: [wp-simple-survey-1] to an article.
 
 == Changelog ==
 
+= 2.2.7 =
+* Buffered variables to remove remaining WP_DEBUG warnings on some setups.
+
 = 2.2.6 =
 * Added full paths to include statements to avoid issues with PHP path issues on specific hosts.
 
