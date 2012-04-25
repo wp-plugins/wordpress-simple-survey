@@ -54,6 +54,9 @@ Add the string: [wp-simple-survey-1] to an article.
 
 == Changelog ==
 
+= 2.2.8 =
+* Linked to quizzes by name instead of ID on Admin.
+
 = 2.2.7 =
 * Buffered variables to remove remaining WP_DEBUG warnings on some setups.
 

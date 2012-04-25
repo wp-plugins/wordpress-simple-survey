@@ -71,11 +71,12 @@ function print_quizIDList($id,$page){
 
   $list = '';
   foreach($quizzes as $q){
+    $name = !empty($q['quiz_title'])? stripslashes(strip_tags($q['quiz_title'])) : "Quiz-".$q['id'];
     if($q['id']==$id){
-      $list .= '<li class="current"><a href="?page='.$page.'&quiz='.$q['id'].'">Quiz-'.$q['id'].'</a>|</li>';
+      $list .= '<li class="current"><a href="?page='.$page.'&quiz='.$q['id'].'">'.$name.'</a>|</li>';
     }
     else{
-      $list .= '<li><a href="?page='.$page.'&quiz='.$q['id'].'">Quiz-'.$q['id'].'</a>|</li>';
+      $list .= '<li><a href="?page='.$page.'&quiz='.$q['id'].'">'.$name.'</a>|</li>';
     }
   }  
   echo $list;
