@@ -54,6 +54,9 @@ Add the string: [wp-simple-survey-1] to an article.
 
 == Changelog ==
 
+= 2.2.9 =
+* Worked on fixing SSL bug for queued assets. 
+
 = 2.2.8 =
 * Linked to quizzes by name instead of ID on Admin.
 
