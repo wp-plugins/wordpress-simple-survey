@@ -1,10 +1,10 @@
 === Wordpress Simple Survey ===
-Contributors: richard_steeleagency, richardroyal
-Donate link: http://labs.saidigital.co/products/wordpress-simple-survey/
-Tags: survey, quiz, poll, exam, test, questionnaire
-Requires at least: 3.3.1
-Tested up to: 3.3.1
-Stable tag: 2.2.6
+Contributors: richardroyal
+Donate link: http://www.sailabs.co/products/wordpress-simple-survey/
+Tags: survey, quiz, poll, exam, test, questionnaire, responsive, personality quiz, product survey
+Requires at least: 3.8.0
+Tested up to: 3.8.1
+Stable tag: 3.0.0
 
 Use this plugin to easily create surveys and graded quizzes. You can track the results and guide users to different locations based on their scores.
 
@@ -24,7 +24,7 @@ Upgrade to the Extended Version for even more functions and features, like multi
 
 You asked, and we listened. WordPress Simple Survey 3.0 will now support many of the features you've requested on our support forums, including custom fields, drop-down questions, responsive design, and more. 
 
-Since WPSS began in 2010, the plugin and WordPress itself have gone through many changes and revisions. To make these new and exciting features work best for you, we had to restructure the plugin's code base and database structure. Unlike previous updates, WPSS 3.0 will not be backwards compatible with earlier versions. This necessary change means a little extra work for you, but we'll make sure you don't get left behind. Visit our [support page](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey) and read below to begin your transition to the new and improved WordPress Simple Survey plugin. 
+Since WPSS began in 2010, the plugin and WordPress itself have gone through many changes and revisions. To make these new and exciting features work best for you, we had to restructure the plugin's code base and database structure. Unlike previous updates, WPSS 3.0 is not backwards compatible with earlier versions. This necessary change means a little extra work for you, but we'll make sure you don't get left behind. Visit our [support page](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey) and read below to begin your transition to the new and improved WordPress Simple Survey plugin. 
 
 * To fully migrate to WordPress 3.0, you will have to setup your quizzes, questions, and answers again. With the new extended version, you can add free-text.
 * If you update to the 3.0 version from the 2.0 version, you will lose access to your current data in the WordPress admin. Visit the WPSS [support page](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey) to learn how to gain access to your old data. 
