@@ -6,53 +6,130 @@ Requires at least: 3.3.1
 Tested up to: 3.3.1
 Stable tag: 2.2.6
 
-A WordPress Survey and Quiz plugin that displays basic weighted survey, then routes user to location based on score, and allows tracking and emails.
+Use this plugin to easily create surveys and graded quizzes. You can track the results and guide users to different locations based on their scores.
 
 == Description ==
 
-Wordpress Simple Survey is a plugin that allows for the creation of a survey, poll, quiz, or questionnaire and the tracking of user submissions. Scores, Names, and Results can be recorded, emailed, and displayed in the WordPress backend. The plugin is jQuery based which allows users to seamlessly and in a graphically appealing manner, take the quiz without reloading the page. Each answer is given a weight (or score/points). Once a quiz is submitted, the user is taken to a predefined URL based on their score range; this page can be any URL including pages setup in WordPress that can contain information relevant to the particular scoring range, including the user's score and answer set. The plugin can also keep a record of all submissions and email results to a predefined email address. 
+Use the WordPress Simple Survey plugin to easily create surveys, quizzes, polls, and questionnaires and track the results. The plugin creates a seamless experience for the user; no loading and reloading of webpages. The browser-tested plugin uses responsive design, so it functions beautifully on any size screen. 
 
-* [Project Homepage](http://labs.saidigital.co/products/wordpress-simple-survey/)
-* [Support](http://labs.saidigital.co/products/wordpress-simple-survey/support-2/)
-* [Extended Version](http://labs.saidigital.co/products/wordpress-simple-survey/wordpress-simple-survey-extended-version/)
+Here's how it works: select how each question is weighted to determine the user's final score. When a quiz is submitted, you can have the results sent to a predefined email address, or simply log in to the WordPress backend to view, email and export submissions as a CSV file. Get creative! Once a quiz is submitted, you can send users to any custom URL based on their score. 
+
+Upgrade to the Extended Version for even more functions and features, like multiple response questions and free text options. 
+
+* [Project Homepage](http://www.sailabs.co/products/wordpress-simple-survey/)
+* [Support](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey)
+* [Extended Version](http://www.sailabs.co/products/wordpress-simple-survey/wordpress-simple-survey-extended-version/)
+
+= Version 2.x and 3.x Compatibility =
+
+You asked, and we listened. WordPress Simple Survey 3.0 will now support many of the features you've requested on our support forums, including custom fields, drop-down questions, responsive design, and more. 
+
+Since WPSS began in 2010, the plugin and WordPress itself have gone through many changes and revisions. To make these new and exciting features work best for you, we had to restructure the plugin's code base and database structure. Unlike previous updates, WPSS 3.0 will not be backwards compatible with earlier versions. This necessary change means a little extra work for you, but we'll make sure you don't get left behind. Visit our [support page](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey) and read below to begin your transition to the new and improved WordPress Simple Survey plugin. 
+
+* To fully migrate to WordPress 3.0, you will have to setup your quizzes, questions, and answers again. With the new extended version, you can add free-text.
+* If you update to the 3.0 version from the 2.0 version, you will lose access to your current data in the WordPress admin. Visit the WPSS [support page](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey) to learn how to gain access to your old data. 
+* Still want to use the old WPSS (v. 2.2.9)? No problem. You can continue to use the old plugin, ask questions and get support; however, no new development will be merged into the old versions of WPSS. 
+* If you've mistakenly updated to the new WPSS, you can re-download WPSS 2.2.9 here: [Last 2.x Branch Version - 2.2.9](http://d5cdf270a78da9cea568-bbb5bab06bc688b4169e00bcc9c16055.r89.cf2.rackcdn.com/wordpress-simple-survey.zip)
+
+= Product Demos =
+
+* [Personality Quiz Demo](http://product-demo.wp-simple-survey.sailabs.co/)
+* [Arithmetic Exam Demo](http://product-demo.wp-simple-survey.sailabs.co/arithmetic-quiz)
+* [Product Survey Demo](http://product-demo.wp-simple-survey.sailabs.co/product-survey)
+
+= Features =
+
+We offer a free version of WPSS, as well as an extended paid version. Your purchase allows us to continue developing and improving the plugin, while providing free support through our Zen Desk support forum.
+
+Free Version
+
+* Store quiz results in database
+* View summary of quiz results
+* Email each quiz result to admin
+* Create auto-response email to quiz takers
+* Customizable email content and subject line to quiz takers
+* Responsive design for mobile compatibility
+* Compatibility with all major browsers
+* Single-answer questions
+
+Extended Version
+
+* Multi-response questions
+* Free input text boxes (one line of text)
+* Free input textareas (multiple lines of text)
+* Select boxes input type
+* Custom field text input
+* Custom field textareas
+* Add images and media to questions
+* Add images and media to answers
+* Email-only field for gathering user's email address at end of quiz
+* Custom fields for gathering miscellaneous information at end of quiz (name, contact info, etc.) 
+* WYSIWYG editor on questions and answers
+* Create multiple quizzes
+* Display end user their score at custom URL
+* Display end user their answers at custom URL
+* Export results in CSV format
+* Delete results
+* Randomize question order
 
 == Installation ==
 
 1. Upload plugin to the 'wp-content/plugins/' directory. Ensure that there is only one WPSS folder and it is named "wordpress-simple-survey".
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Once activated the new menu item: WPSS Options, is created
-4. Configure your options, make sure to select the number of questions you want and click 'Update'
-5. Enter Questions, Answers, Weights, and Routes in the format specified, DO NOT PASTE FROM MS WORD, use a basic text editor
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Once activated the new menu item: Surveys/Quizzes, is created on the admin sidebar.
+4. For each quiz, configure the options, add questions with answer, then configure the routes and numeric ranges.
+5. Put the quizzes shortcode in a page or post. Each shortcode will look like: [wp_simple_survey id="1"].
+6. Do not paste from MS Word without cleaning the text or the output may look malencodded.
+7. If you are upgrading to the extended version, upload the new file directly over the old files then deactivate and reactivate the plugins. You will not lose any data.
 
 == Frequently Asked Questions ==
 
-= Are the results tracked? =
+= How do I make the quiz show up in my content? =
 
-The results, Name, and Email addresses are stored in your database, and display in the 'WPSS Results' menu.
+Add the string: [wp_simple_survey id="1"] to a page or post.
 
-= I don't want the user to be immediately directed to the end page, how can I create a buffer page? =
+= How are results tracked? =
 
-Simple, instead of linking a score range with the end page, link each range with a separate buffer page that explains their score(or whatever) and then have that page link to the end page.
+You have the option to store the results for each quiz. The full results (including the question and answer text) are stored in your database. If you later make changes to the questions or answers, the previous results are still stored with the questions and answers unchanged.
+
+= I don't want the user to be immediately directed to the end page. How can I create a buffer page? =
+
+Create a buffer page. Instead of linking a score range to the end page, send users to a buffer page that explains their scores. Include a link to the end page from that buffer page. 
 
 = What type of quizzes can I create? =
 
-Two obvious ways of using this plugin are to create a Survey-Type quiz that routes user to a location based on their input, another is to use the plugin as a Quiz-Type manager where users are routed to either a "Passing" or "Failing" page. Also note, that results are recorded along with the user's email address (if this option is selected), so for a Survey-Type quiz, an admin can follow up with the user (market to them based on responses to quiz), or an admin can administer a test and record who passed and who failed. 
+The plugin is most commonly used in two ways: quizzes and surveys.
 
-= How do I make the quiz show up in my content? =
+Quiz-Type: Route users to either a "Passing" or "Failing" page. 
 
-Add the string: [wp-simple-survey-1] to an article.
+Survey-Type: Route users to a custom URL based on their score range. 
+
+Note: Both quizzes and surveys can be set up to record user email addresses. The ability to collect contact information means you can use the plugin in creative ways. A college professor can easily record the students who passed or failed. Market researchers can email potential customers based on their survey responses, etc.
 
 == Screenshots ==
 
-1. Using quiz
-2. Progress Bar
-3. Submit Results
-4. Email Results
-5. Backend Quiz Management
-6. Backend Results View
-7. Diagram
+1. Standard question
+2. Question with a photo
+3. Require email address to see results/have them emailed to you
+4. Route to page based on results 
+5. Quiz options
+6. Routes
+7. Editing a question
+8. Editing an answer
+9. Use the built-in WordPress editor to easily format or add photos to your questions
 
 == Changelog ==
+
+= 3.0.0 =
+* Improved plugin structure to allow features to be merged in more easily.
+* Changed Results data structure for recording quiz results to fix performance issue.
+* Cleaned HTML output structure to be less intrusive and removed all traces of jQuery-UI.
+* Quiz output is now Responsive.
+* Allowed control of email subject line.
+* Improved automatic WP User account integration for quiz takers.
+* Added dynamic CSS box feature to make it easier to style plugin.
+* Updated TinyMCE calls to use new WP API.
+* Note: Unfortunately, the 3.x branch is not backwards compatible with the 2.x branch.
 
 = 2.2.9 =
 * Worked on fixing SSL bug for queued assets. 
@@ -131,26 +208,29 @@ Add the string: [wp-simple-survey-1] to an article.
 
 == Upgrade Notice ==
 
+= 3.0.0 =
+* WARNING: The 3.x branch is not backwards compatible with the 2.x branch. If you choose to upgrade you will have to re-setup your quizzes and questions. You will also lose direct access to your stored results but they will still exist in the database. Please read all the documentation before upgrading.
+
 = 2.2.5  =
-Table collations and charsets are now UTF. However, existing databases cannot easily be changed through the plugin. If you need UTF characters, you will have to delete your WPSS database tables and then deactivate and then activate the plugin to generate new tables with UTF collation.
+* Table collations and charsets are now UTF. However, existing databases cannot easily be changed through the plugin. If you need UTF characters, you will have to delete your WPSS database tables and then deactivate and then activate the plugin to generate new tables with UTF collation.
 
 = 2.2.1  =
-Because the folder structure has changed, you may need to delete the 'wordpress-simple-survey' folder and replace with this update. You will not lose any data.
+* Because the folder structure has changed, you may need to delete the 'wordpress-simple-survey' folder and replace with this update. You will not lose any data.
 
 = 2.0.0 =
-When upgrading to 2.0.0 from 1.5, quizzes will have to be re-inserted
+* When upgrading to 2.0.0 from 1.5, quizzes will have to be re-inserted
 
 = 1.4 =
-Improved mail() function and admin CSS
+* Improved mail() function and admin CSS
 
 = 1.3 =
-Fixed bug in function that registers WPSS Menus in backend.
+* Fixed bug in function that registers WPSS Menus in backend.
 
 = 1.2 =
-Improved import method for all javascript libraries. WPSS is now using WP native versions of jQuery & jQuery-UI core. These import in noConflict() mode which is taken advantage of by the plugin. This ensures fewer conflict with existing plugins and themes. Checkform JS method is also updated (by name only); it is now wpss_checkForm(form), this also reduces conflict with existing themes' and plugins' checkform methods. 
+* Improved import method for all javascript libraries. WPSS is now using WP native versions of jQuery & jQuery-UI core. These import in noConflict() mode which is taken advantage of by the plugin. This ensures fewer conflict with existing plugins and themes. Checkform JS method is also updated (by name only); it is now wpss_checkForm(form), this also reduces conflict with existing themes' and plugins' checkform methods. 
 
 = 1.1 =
-Changed jQueryUI import method to ensure that only one copy is being registered
+* Changed jQueryUI import method to ensure that only one copy is being registered
 
 = 1.0 =
-None
+* None
