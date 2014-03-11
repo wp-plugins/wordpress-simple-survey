@@ -121,6 +121,7 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 == Changelog ==
 
 = 3.0.0 =
+* Note: The 3.x branch is not backwards compatible with the 2.x branch. Please read all documentation before migrating.
 * Improved plugin structure to allow features to be merged in more easily.
 * Changed Results data structure for recording quiz results to fix performance issue.
 * Cleaned HTML output structure to be less intrusive and removed all traces of jQuery-UI.
@@ -129,7 +130,7 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 * Improved automatic WP User account integration for quiz takers.
 * Added dynamic CSS box feature to make it easier to style plugin.
 * Updated TinyMCE calls to use new WP API.
-* Note: Unfortunately, the 3.x branch is not backwards compatible with the 2.x branch.
+* Note: The 3.x branch is not backwards compatible with the 2.x branch. Please read all documentation before migrating.
 
 = 2.2.9 =
 * Worked on fixing SSL bug for queued assets. 
