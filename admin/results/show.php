@@ -50,7 +50,7 @@
         <td><?php echo $result->data['route_results']['url'];?></td>
       </tr>
 
-      <?php if( $result->data['meta']['has_wp_user'] == true  ): ?>
+      <?php if( !empty($result->data['meta']['has_wp_user']) && $result->data['meta']['has_wp_user'] == true  ): ?>
         <tr>
           <th scope="row">WP Username</th>
           <td><?php echo $result->data['meta']['wp_user_login'];?></td>

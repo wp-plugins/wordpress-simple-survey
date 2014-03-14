@@ -41,7 +41,7 @@
       <?php foreach($fields->fields as $field):?>
         <tr>
           <td><?php echo substr(strip_tags($field->name), 0, 50);?></td>
-          <td><a href="<?php echo $util::admin_url('field', 'edit', $field->id);?>">Edit</a></td>
+          <td><a href="<?php echo $util->admin_url('field', 'edit', $field->id);?>">Edit</a></td>
           <td>
             <code><?php echo ($field->required)? '*':'&nbsp;';?></code>
           </td>

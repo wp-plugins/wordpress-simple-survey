@@ -43,7 +43,7 @@
           </td>
           <td>
             <?php if(!$quiz->new):?>
-              <a href="<?php echo $util::admin_url('question', 'edit', $question['question']->id);?>">Edit</a>
+              <a href="<?php echo $util->admin_url('question', 'edit', $question['question']->id);?>">Edit</a>
             <?php endif;?>
           </td>
           <td>

@@ -46,7 +46,7 @@
     <?php foreach($quizzes->quizzes as $quiz): ?>
       <tr>
         <td><strong><?php echo $quiz->title;?></strong></td>
-        <td><a href="<?php echo $util::admin_url('quiz', 'edit', $quiz->id);?>">Edit</a></td>
+        <td><a href="<?php echo $util->admin_url('quiz', 'edit', $quiz->id);?>">Edit</a></td>
         <td>
           <code>[wp_simple_survey id="<?php echo $quiz->id;?>"]</code>
         </td>

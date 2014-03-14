@@ -120,6 +120,11 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 
 == Changelog ==
 
+= 3.0.1 =
+* Fixed IE8 browser compatibility issue.
+* Fixed issue would T_DOUBLE_COLON/T_PAAMAYIM_NEKUDOTAYIM static function calls.
+* Added route name to results index on admin.
+
 = 3.0.0 =
 * Note: The 3.x branch is not backwards compatible with the 2.x branch. Please read all documentation before migrating.
 * Improved plugin structure to allow features to be merged in more easily.

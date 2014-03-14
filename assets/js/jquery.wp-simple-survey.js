@@ -1,7 +1,7 @@
 /*!
  *  WordPress Simple Survey JavaScript Library v3.0.0
  *
- *  @version 3.0.0
+ *  @version 3.0.1
  *  @copyright 2012, 2013, 2014, SAI Digital
  *  @author Richard Royal
  *  @license see EULA
@@ -43,7 +43,7 @@
         if( $(panel, wpss_id).hasClass('wpss-fields-panel') ){
           $(".wpss_next", wpss_id).attr("disabled", "disabled").addClass('wpss_disabled');
         } else {
-          if( answered_panels.indexOf(panel) < 1 ){
+          if( $.inArray(panel, answered_panels) < 1 ){
             $(".wpss_next", wpss_id).attr("disabled", "disabled").addClass('wpss_disabled');
           }
         }
@@ -87,7 +87,7 @@
     $("input[type='radio'], input[type='checkbox'], select", wpss_id).change(function() {          
       panel = '.wpss_panel_' . concat( current );
       if( !$(panel, wpss_id).hasClass('wpss-fields-panel') ){
-        if( answered_panels.indexOf(panel) == -1 ){
+        if( $.inArray( panel, answered_panels ) == -1 ){
           answered_panels.push( panel );
         }
         $(".wpss_next", wpss_id).removeAttr("disabled").removeClass('wpss_disabled');
@@ -97,26 +97,12 @@
     $("textarea, input[type='text']", wpss_id).keydown(function() {
       panel = '.wpss_panel_' . concat( current );
       if( !$(panel, wpss_id).hasClass('wpss-fields-panel') ){
-        if( answered_panels.indexOf(panel) == -1 ){
+        if( $.inArray( panel, answered_panels ) == -1 ){
           answered_panels.push( panel );
         }
         $(".wpss_next", wpss_id).removeAttr("disabled").removeClass('wpss_disabled');
       }
     });
-
-
-
-    /************************************************************/
-    /* Progress bar handler                                     */
-    /************************************************************/
-    /*
-    var progress_bar = $('.progress_bar', wpss);
-    $(progress_bar).progressbar( { 
-      change: function() {
-        $(".amount", wpss).text(Math.round($(".progress", wpss).progressbar("option", "value")) + "%");
-      }
-    } );
-    */
 
   }
 }( jQuery ));

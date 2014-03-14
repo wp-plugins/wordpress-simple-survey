@@ -25,6 +25,7 @@
         <th>View</th>
         <th>Fields</th>
         <th>Score</th>
+        <th>Route</th>
         <th>IP Address</th>
         <th>Submitted At</th>
         <th>Delete</th>
@@ -36,6 +37,7 @@
         <th>View</th>
         <th>Fields</th>
         <th>Score</th>
+        <th>Route</th>
         <th>IP Address</th>
         <th>Submitted At</th>
         <th>Delete</th>
@@ -49,7 +51,7 @@
             </td>
             <td>
               <strong>
-                <a class="row-title" href="<?php echo $util::admin_url('result', 'show', $result->id);?>">Show</a>
+                <a class="row-title" href="<?php echo $util->admin_url('result', 'show', $result->id);?>">Show</a>
               </strong>
             </td>
             <td>
@@ -57,6 +59,11 @@
             </td>
             <td>
               <?php echo $result->score;?>
+            </td>
+            <td>
+              <?php if( !empty($result->data['route_results']) && !empty($result->data['route_results']['name']) ): ?>
+                <?php echo $result->data['route_results']['name']; ?>
+              <?php endif;?>
             </td>
             <td>
               <?php echo $result->ip_address;?>

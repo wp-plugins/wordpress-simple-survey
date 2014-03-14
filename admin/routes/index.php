@@ -43,7 +43,7 @@
       <?php foreach($routes->routes as $route):?>
         <tr>
           <td><?php echo substr(strip_tags($route->name), 0, 50);?></td>
-          <td><a href="<?php echo $util::admin_url('route', 'edit', $route->id);?>">Edit</a></td>
+          <td><a href="<?php echo $util->admin_url('route', 'edit', $route->id);?>">Edit</a></td>
           <td><?php echo $route->from_score;?></td>
           <td><?php echo $route->to_score;?></td>
           <td><?php echo $route->url;?></td>
