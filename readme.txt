@@ -122,7 +122,7 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 
 = 3.0.1 =
 * Fixed IE8 browser compatibility issue.
-* Fixed issue would T_DOUBLE_COLON/T_PAAMAYIM_NEKUDOTAYIM static function calls.
+* Fixed issue with T_DOUBLE_COLON/T_PAAMAYIM_NEKUDOTAYIM static function calls.
 * Added route name to results index on admin.
 
 = 3.0.0 =
