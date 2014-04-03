@@ -135,7 +135,7 @@
               <option value='display_order' selected>Use Display Order</option>
             </select>
             <br />
-            <span class="description">Upgrade to the extende version to use randomized order.</span>
+            <span class="description">Upgrade to the extended version to use randomized order.</span>
           </td>
         </tr>
 
