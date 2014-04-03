@@ -112,7 +112,7 @@
           <td>
             <?php echo wpss_text_preview( $answer['question_text'], 100 ); ?><br />
             <?php echo wpss_text_preview( $answer['answer']['answer_text'], 100 ); ?><br />
-            Score: <?php echo $answer['answer']['score']; ?>
+            Score: <?php echo empty($answer['answer']['score']) ? '' : $answer['answer']['score'] ; ?>
           </td>
         </tr>
       <?php endforeach; ?>

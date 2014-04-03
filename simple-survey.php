@@ -3,7 +3,7 @@
 Plugin Name: WP Simple Survey
 Plugin URI: http://www.sailabs.co/products/wordpress-simple-survey/
 Description: Use this plugin to easily create surveys and graded quizzes. You can track the results and guide users to different locations based on their scores.
-Version: 3.0.1
+Version: 3.0.2
 Author: Richard Royal
 Author URI: http://www.sailabs.co/
 */

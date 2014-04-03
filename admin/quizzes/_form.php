@@ -38,6 +38,7 @@
         <tr valign="top">
           <th scope="row"><label for="wpss[store_results]">Store Quiz Results?</label></th>
           <td>
+            <input name="wpss[store_results]" type="hidden" value="0">
             <input name="wpss[store_results]" type="checkbox" value="1" <?php echo $quiz->store_results? "checked":"";?>>
             <span class="description">Store quiz results in the database.</span>
           </td>

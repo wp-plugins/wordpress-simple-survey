@@ -120,6 +120,11 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 
 == Changelog ==
 
+= 3.0.2 =
+* Fixed minor bug in saving results without custom fields on some server configurations.
+* Fixed minor bug with MySQL and NOT NULL values for some WAMP servers.
+* Fixed minor bug with outputting score on admin.
+
 = 3.0.1 =
 * Fixed IE8 browser compatibility issue.
 * Fixed issue with T_DOUBLE_COLON/T_PAAMAYIM_NEKUDOTAYIM static function calls.

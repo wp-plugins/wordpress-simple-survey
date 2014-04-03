@@ -36,7 +36,6 @@ function wpss_create_new_quiz(){
   $q['send_admin_email'] = '1';
   $q['admin_email_addr'] = $current_user->user_email;
   $q['user_email_from_name'] = 'WP-Simple-Survey';
-  $q['record_submit_info'] = '1';
   $q['send_user_email'] = '1';
   $q['show_title'] = '1';
   $q['user_email_from_address'] = $current_user->user_email;

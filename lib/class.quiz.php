@@ -108,7 +108,6 @@ class WPSS_Quiz{
     $this->submit_txt = "Thank you for taking our survey.";
     $this->submit_button_txt = "Click to Submit";
     $this->store_results = true;
-    $this->record_submit_info = true;
     $this->send_admin_email = true;
     $this->admin_email_addr = $current_user->user_email;
     $this->send_user_email = true;

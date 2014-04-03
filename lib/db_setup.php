@@ -18,8 +18,6 @@ function wpss_plugin_install() {
           store_results tinyint NOT NULL,
           send_admin_email tinyint NOT NULL,
           admin_email_addr text NOT NULL,
-          record_submit_info tinyint NOT NULL,
-          record_fields text NOT NULL,
           send_user_email tinyint NOT NULL,
           user_email_content text NOT NULL,
           user_email_subject text NOT NULL,

@@ -236,18 +236,20 @@ class WPSS_Result{
   private function set_fields( &$results ){
 
     $results['field_results'] = array();
-    foreach( $results['fields'] as $field_id => $posted_value ){
-      $f = array();
-      
-      $fv = $this->quiz->get_field_by_id($field_id);
-
-      $f['field_id'] = $fv->id;
-      $f['field_text'] = $fv->name;
-      $f['field_type'] = $fv->meta_type;
-      $f['required'] = $fv->required;
-      $f['answer'] = sanitize_text_field( $posted_value );
-
-      $results['field_results'][] = $f;
+    if( !empty($results['fields']) ){
+      foreach( $results['fields'] as $field_id => $posted_value ){
+        $f = array();
+        
+        $fv = $this->quiz->get_field_by_id($field_id);
+  
+        $f['field_id'] = $fv->id;
+        $f['field_text'] = $fv->name;
+        $f['field_type'] = $fv->meta_type;
+        $f['required'] = $fv->required;
+        $f['answer'] = sanitize_text_field( $posted_value );
+  
+        $results['field_results'][] = $f;
+      }
     }
 
     $this->field_results = $results['field_results'];
