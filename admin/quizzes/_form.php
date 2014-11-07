@@ -100,7 +100,10 @@
           <td>
             <?php wp_editor($quiz->user_email_content, 'user_email_content', array('textarea_name'=>"wpss[user_email_content]", 'teeny'=>true));?>
             <span class="description">Content for automated email. Can use shortcodes:</span>
-            <span>[routed], [score], [quiztitle], and [answers]</span>
+            <span>[routed], [score], [quiztitle], and [answers]</span><br />
+            <span class="description">
+              Can also use shortcodes shown on the Fields menu for this quiz to insert custom field answers from the quiz taker.
+            </span>
           </td>
         </tr>
 

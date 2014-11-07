@@ -25,11 +25,13 @@
       <th>Edit</th>
       <th>Required</th>
       <th>Type</th>
+      <th>Shortcode</th>
       <th>Delete</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -53,6 +55,9 @@
             <?php endforeach; ?>
           </td>
           <td>
+            <code>[wp_ss_field_<?php echo $field->id?>]</code>
+          </td>
+          <td>
             <form method="post" action="<?php echo $util->admin_form_url('field','delete', $field->id);?>">
               <?php wp_nonce_field("wpss_crud", "wpss_crud"); ?>
               <input type="hidden" name="wpss[quiz_id]" value="<?php echo $quiz->id;?>" />
@@ -64,7 +69,10 @@
       <?php endforeach;?>
   </tbody>
   </table>
-  <p><span class="description">Upgrade to the extended version to add new custom fields.</span></p>
+  <p>
+    <span class="description">Upgrade to the extended version to add new custom fields.</span></br />
+    <span class="description">Use the shortcodes to put the user's field answers in the auto-response email.
+  </p>
 
   <div class="wpss-admin-nav">
     <p>

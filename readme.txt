@@ -5,6 +5,7 @@ Tags: survey, quiz, poll, exam, test, questionnaire, responsive, personality qui
 Requires at least: 3.8.0
 Tested up to: 3.8.1
 Stable tag: 3.0.0
+Version: 3.1.0
 
 Use this plugin to easily create surveys and graded quizzes. You can track the results and guide users to different locations based on their scores.
 
@@ -19,17 +20,6 @@ Upgrade to the Extended Version for even more functions and features, like multi
 * [Project Homepage](http://www.sailabs.co/products/wordpress-simple-survey/)
 * [Support](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey)
 * [Extended Version](http://www.sailabs.co/products/wordpress-simple-survey/wordpress-simple-survey-extended-version/)
-
-= Version 2.x and 3.x Compatibility =
-
-You asked, and we listened. WordPress Simple Survey 3.0 will now support many of the features you've requested on our support forums, including custom fields, drop-down questions, responsive design, and more. 
-
-Since WPSS began in 2010, the plugin and WordPress itself have gone through many changes and revisions. To make these new and exciting features work best for you, we had to restructure the plugin's code base and database structure. Unlike previous updates, WPSS 3.0 is not backwards compatible with earlier versions. This necessary change means a little extra work for you, but we'll make sure you don't get left behind. Visit our [support page](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey) and read below to begin your transition to the new and improved WordPress Simple Survey plugin. 
-
-* To fully migrate to WordPress 3.0, you will have to setup your quizzes, questions, and answers again. With the new extended version, you can add free-text.
-* If you update to the 3.0 version from the 2.0 version, you will lose access to your current data in the WordPress admin. Visit the WPSS [support page](https://sailabs.zendesk.com/hc/en-us/categories/200014674-WordPress-Simple-Survey) to learn how to gain access to your old data. 
-* Still want to use the old WPSS (v. 2.2.9)? No problem. You can continue to use the old plugin, ask questions and get support; however, no new development will be merged into the old versions of WPSS. 
-* If you've mistakenly updated to the new WPSS, you can re-download WPSS 2.2.9 here: [Last 2.x Branch Version - 2.2.9](http://d5cdf270a78da9cea568-bbb5bab06bc688b4169e00bcc9c16055.r89.cf2.rackcdn.com/wordpress-simple-survey.zip)
 
 = Product Demos =
 
@@ -64,6 +54,7 @@ Extended Version
 * Add images and media to answers
 * Email-only field for gathering user's email address at end of quiz
 * Custom fields for gathering miscellaneous information at end of quiz (name, contact info, etc.) 
+* Add custom field values to auto-response email
 * WYSIWYG editor on questions and answers
 * Create multiple quizzes
 * Display end user their score at custom URL
@@ -119,6 +110,9 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 9. Use the built-in WordPress editor to easily format or add photos to your questions
 
 == Changelog ==
+
+= 3.1.0 =
+* Added ability to put custom field answers into the auto-response email via shortcodes.
 
 = 3.0.2 =
 * Fixed minor bug in saving results without custom fields on some server configurations.

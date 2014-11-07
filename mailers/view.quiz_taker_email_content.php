@@ -11,6 +11,10 @@ function wpss_quiz_taker_email_content( $result ){
   $msg = str_replace( '[score]',  $result->score, $msg );
   $msg = str_replace( '[quiztitle]',  $result->quiz->title, $msg );
 
+  foreach($result->field_results as $field){
+    $msg = str_replace('[wp_ss_field_'.$field['field_id'].']', $field['answer'], $msg);
+  }
+
   $ans = '';
   foreach( $result->full_results as $qa ){
     $ans .= '<p>'.$qa['question_text'].'</p>';
