@@ -3,9 +3,8 @@ Contributors: richardroyal
 Donate link: http://www.sailabs.co/products/wordpress-simple-survey/
 Tags: survey, quiz, poll, exam, test, questionnaire, responsive, personality quiz, product survey
 Requires at least: 3.8.0
-Tested up to: 3.8.1
+Tested up to: 4.1.1
 Stable tag: 3.0.0
-Version: 3.1.0
 
 Use this plugin to easily create surveys and graded quizzes. You can track the results and guide users to different locations based on their scores.
 
@@ -62,6 +61,7 @@ Extended Version
 * Export results in CSV format
 * Delete results
 * Randomize question order
+* Allow quiz taker to chose admin recipient
 
 == Installation ==
 
@@ -110,6 +110,9 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 9. Use the built-in WordPress editor to easily format or add photos to your questions
 
 == Changelog ==
+
+= 3.2.1 =
+* Added global options for handling email headers, explicitly send to wp_mail, set with callbacks, or set no email headers.
 
 = 3.1.0 =
 * Added ability to put custom field answers into the auto-response email via shortcodes.

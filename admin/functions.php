@@ -73,17 +73,33 @@ function wpss_create_new_quiz(){
 
 
 
-
+/**
+ *  Save options from admin options page
+ */
 function wpss_save_options(){
   if( !empty($_POST)  && $_POST['save_options'] == 'Save Options'){
     $options = $_POST['wpss'];
   
     $css = $options['custom_css'];
-    update_option( 'wpss_custom_css', $css );
-  }
+    update_option('wpss_custom_css', $css);
 
+    $email_header_compatibility = $options['email_header_compatibility'];
+    update_option('wpss_email_header_compatibility', $email_header_compatibility);
+  }
 }
 
 
+
+
+/**
+ * Set email header callbacks
+ */
+function wpss_set_content_type_html($content_type){
+  return 'text/html';
+}
+
+function wpss_set_content_type_text($content_type){
+  return 'text/plain';
+}
 
 ?>

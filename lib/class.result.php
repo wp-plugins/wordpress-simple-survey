@@ -11,7 +11,7 @@ class WPSS_Result{
   const SHORTCODE_FULL_RESULTS = 'wp_simple_survey_result_full_summary';
 
 
-  public function __construct( $load = NULL){
+  public function __construct($load = NULL){
     if(is_array($load)) $this->get_results($load); 
   }
 
@@ -21,7 +21,6 @@ class WPSS_Result{
   *  and saves into database if admin option set, and emails users result.
   */
   public function parse_results($data){
-
     global $wpdb;
 
     if(empty($data['wpss'])) return '';
@@ -36,6 +35,7 @@ class WPSS_Result{
     $this->posted_results = $results;
     $this->submitter_ip_address = $_SERVER['REMOTE_ADDR'];
     $this->submitted_at = current_time('mysql', 1);
+    $this->email_header_compatibility = get_option('wpss_email_header_compatibility', 'pass_explicitly_to_wp_mail');
 
     $result = array();
     $result['quiz_id'] = (int) $quiz->id;
@@ -49,9 +49,7 @@ class WPSS_Result{
     if( $quiz->store_results == '1' ){
       $wpdb->insert( WPSS_RESULT_DB, $result );
     }
-    if( $quiz->send_admin_email == '1' ){
-      $this->send_admin_email(); 
-    }
+    $this->send_admin_email(); 
     if( $quiz->send_user_email == '1' ){
       $this->send_user_email();
     }
@@ -187,6 +185,7 @@ class WPSS_Result{
   private function set_questions( &$results ){
 
     $results['full_results'] = array();
+    $this->score = 0;
     foreach($results['questions'] as $question_id => $answer_ids){
       $qa = array();
       $q = $this->quiz->get_question_by_id( (int) $question_id );
@@ -224,7 +223,8 @@ class WPSS_Result{
 
       return $a;
     } else {
-      return array( 'answer_text' => sanitize_text_field( $answer_ids[0] ) );
+      $this->score += 0;
+      return array( 'answer_text' => sanitize_text_field( $answer_ids[0] ), 'score' => 0);
     }
   }
 
@@ -344,37 +344,93 @@ class WPSS_Result{
   private function send_admin_email(){
     $msg = wpss_admin_email_content( $this );
     $subject = '[' . get_bloginfo('name') . '] ' . $this->quiz->title . ' - New Quiz Submitted';
+    $send_to = array();
+    $send_to[] = $this->quiz->admin_email_addr;
     
-    $headers   = array();
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset="'.get_option('blog_charset').'"';
-    $headers[] = 'From: '.$this->quiz->admin_email_addr;
-    $headers[] = 'Reply-To: '.$this->quiz->admin_email_addr;
-    $headers[] = 'X-Mailer: PHP/'. phpversion();
+   /**
+    * Optionally send main admin email
+    */
+    if( $this->quiz->send_admin_email == '1' ){
+      if($this->email_header_compatibility == 'pass_explicitly_to_wp_mail'){
+        $headers   = array();
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset="'.get_option('blog_charset').'"';
+        $headers[] = 'From: '.$this->quiz->admin_email_addr;
+        $headers[] = 'Reply-To: '.$this->quiz->admin_email_addr;
+        $headers[] = 'X-Mailer: PHP/'. phpversion();
 
-    wp_mail( $this->quiz->admin_email_addr, $subject, $msg, implode("\r\n",$headers) );
+        wp_mail($send_to, $subject, $msg, implode("\r\n",$headers));
+
+      } elseif($this->email_header_compatibility == 'set_with_callbacks'){
+
+        add_filter('wp_mail_content_type', 'wpss_set_content_type_html');
+        add_filter('wp_mail_from', array($this, 'wp_mail_from_callback'));
+        wp_mail($send_to, $subject, $msg);
+        add_filter('wp_mail_content_type', 'wpss_set_content_type_text');
+
+      } elseif($this->email_header_compatibility == 'do_not_set_headers'){
+        add_filter('wp_mail_content_type', 'wpss_set_content_type_html');
+        wp_mail($send_to, $subject, $msg);
+        add_filter('wp_mail_content_type', 'wpss_set_content_type_text');
+      }
+    }
   }
 
 
   private function send_user_email(){
-    $msg = wpss_quiz_taker_email_content( $this );
+    $msg = wpss_quiz_taker_email_content($this);
     $subject = $this->quiz->user_email_subject;
-
-    $headers = array();
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset="'.get_option('blog_charset').'"';
-    $headers[] = 'From: ' . $this->quiz->user_email_from_name . ' <' . $this->quiz->user_email_from_address . '>';
-    $headers[] = 'Reply-To: ' . $this->quiz->user_email_from_name . ' <' . $this->quiz->user_email_from_address . '>';
-    $headers[] = 'X-Mailer: PHP/'. phpversion();
-
+    $send_to = array();
     foreach( $this->field_results as $field ){
       if( $field['field_type'] == 'email_quiz_taker' && is_email($field['answer']) ){
-        wp_mail( $field['answer'], $subject, $msg, implode( "\r\n", $headers ) );
+        $send_to[] = $field['answer'];
       }
     }
 
+    if(!empty($send_to)){
+      if($this->email_header_compatibility == 'pass_explicitly_to_wp_mail'){
+        $headers = array();
+        $headers[] = 'MIME-Version: 1.0';
+        $headers[] = 'Content-type: text/html; charset="'.get_option('blog_charset').'"';
+        $headers[] = 'From: ' . $this->quiz->user_email_from_name . ' <' . $this->quiz->user_email_from_address . '>';
+        $headers[] = 'Reply-To: ' . $this->quiz->user_email_from_name . ' <' . $this->quiz->user_email_from_address . '>';
+        $headers[] = 'X-Mailer: PHP/'. phpversion();
+
+        wp_mail($send_to, $subject, $msg, implode("\r\n", $headers));
+
+      } elseif($this->email_header_compatibility == 'set_with_callbacks'){
+
+        add_filter('wp_mail_content_type', 'wpss_set_content_type_html');
+        add_filter('wp_mail_from', array($this, 'wp_mail_from_callback'));
+        add_filter('wp_mail_from_name', array($this, 'wp_mail_from_name_callback'));
+        wp_mail($send_to, $subject, $msg);
+        add_filter('wp_mail_content_type', 'wpss_set_content_type_text');
+
+      } elseif($this->email_header_compatibility == 'do_not_set_headers'){
+        add_filter('wp_mail_content_type', 'wpss_set_content_type_html');
+        wp_mail($send_to, $subject, $msg);
+        add_filter('wp_mail_content_type', 'wpss_set_content_type_text');
+      }
+    }
   }
 
+  public function wp_mail_from_callback($original){
+    $mail_from = $this->quiz->user_email_from_address;
+    if(!empty($mail_from)){
+      return $mail_from;
+    } else {
+      return $original;
+    }
+  }
+
+  public function wp_mail_from_name_callback($original){
+    $mail_from_name = $this->quiz->user_email_from_name;
+    if(!empty($mail_from_name)){
+      return $mail_from_name;
+    } else {
+      return $original;
+    }
+  }
 
   /** ------------------------------------------------------------------*/
   /* CSV functions                                                      */
