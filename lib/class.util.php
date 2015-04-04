@@ -249,7 +249,7 @@ class WPSS_Util{
   *  Return URL to given JS file
   */
   public function get_js($f = ''){
-    return $this->assets . 'js/' . $f;
+    return $this->assets . 'build/js/' . $f;
   }
 
 
@@ -258,7 +258,7 @@ class WPSS_Util{
   *  Return URL to given CSS file
   */
   public function get_css($f = ''){
-    return $this->assets . 'css/' . $f;
+    return $this->assets . 'build/css/' . $f;
   }
 
 }

@@ -111,8 +111,14 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 
 == Changelog ==
 
+= 3.3.0 =
+* Minified JS and CSS assets.
+
 = 3.2.1 =
 * Added global options for handling email headers, explicitly send to wp_mail, set with callbacks, or set no email headers.
+
+= 3.2.0 =
+* Improved admin page authorization.
 
 = 3.1.0 =
 * Added ability to put custom field answers into the auto-response email via shortcodes.
@@ -215,6 +221,9 @@ Note: Both quizzes and surveys can be set up to record user email addresses. The
 * Originating version.
 
 == Upgrade Notice ==
+
+= 3.3.0 =
+* Contains new compressed JS and CSS assets. You may need to clear your browser cache. If you have edited the plugin's CSS and JS files directly, you will need to manually merge your changed into the new files.
 
 = 3.0.0 =
 * WARNING: The 3.x branch is not backwards compatible with the 2.x branch. If you choose to upgrade you will have to re-setup your quizzes and questions. You will also lose direct access to your stored results but they will still exist in the database. Please read all the documentation before upgrading.
